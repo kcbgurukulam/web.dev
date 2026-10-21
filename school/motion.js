@@ -161,7 +161,7 @@
   }
 
   // 5. Button Ripple / Click Micro-Feedback
-  document.querySelectorAll('.btn-primary, .btn-secondary, .btn-submit-form, .btn-apply-header').forEach(function(btn) {
+  document.querySelectorAll('.btn-primary, .btn-secondary, .btn-submit-form, .btn-apply-header, .mobile-menu-toggle').forEach(function(btn) {
     btn.addEventListener('mousedown', function() {
       this.style.transform = 'scale(0.97)';
     });
