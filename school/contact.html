@@ -264,34 +264,11 @@ We welcome qualified, enthusiastic teachers for pre-primary, primary, music, art
 <textarea class="form-textarea" id="career_message" name="message" rows="4" placeholder="Please share your qualifications, subject expertise, and experience..." required maxlength="1500"></textarea>
 </div>
 
-<!-- Primary Action Button: Verify Email & Send Application -->
-<button class="btn-submit-form" id="btnCareerSubmit" type="button" style="cursor: pointer; width: 100%; justify-content: center;">
-<span id="btnCareerSubmitText">Verify Email &amp; Send Application</span>
-<span class="material-symbols-outlined" id="btnCareerSubmitIcon" style="font-size: 20px;">mark_email_read</span>
+<!-- Primary Action Button: Send Application / Message -->
+<button class="btn-submit-form" id="btnCareerSubmit" type="submit" style="cursor: pointer; width: 100%; justify-content: center;">
+<span id="btnCareerSubmitText">Send Application / Message</span>
+<span class="material-symbols-outlined" id="btnCareerSubmitIcon" style="font-size: 20px;">send</span>
 </button>
-
-<!-- Email OTP Verification Box (Appears after clicking Verify Email & Send Application) -->
-<div id="careerOtpContainer" style="display: none; padding: 1.25rem; background: #f4f6fb; border: 2px dashed #12306b; border-radius: 0.75rem;">
-<div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.5rem;">
-<span class="material-symbols-outlined" style="color: #12306b; font-size: 22px;">verified_user</span>
-<h4 style="font-size: 1rem; font-weight: 700; color: #001b4b; margin: 0;">Verify Email via OTP</h4>
-</div>
-<p style="font-size: 0.825rem; color: #5b6475; margin-bottom: 0.85rem; line-height: 1.5;">
-We have sent a 6-digit verification code to <strong id="sentCareerEmail" style="color: #001b4b;">your email</strong>. Please enter it below to complete your application.
-</p>
-<div style="display: flex; gap: 0.5rem; align-items: center;">
-<input class="form-input" id="careerOtpInput" placeholder="6-digit Email code" type="text" maxlength="6" pattern="[0-9]{6}" inputmode="numeric" style="flex: 1; letter-spacing: 0.25em; font-weight: 700; text-align: center; font-size: 1.15rem; height: 44px;">
-<button class="btn-primary" id="btnVerifyCareerOtp" type="button" style="padding: 0 1.25rem; height: 44px; font-size: 0.85rem; background: #0e7039; white-space: nowrap;">
-<span>Confirm &amp; Submit</span>
-<span class="material-symbols-outlined" style="font-size: 18px;">verified</span>
-</button>
-</div>
-<div style="display: flex; justify-content: space-between; align-items: center; margin-top: 0.75rem; font-size: 0.75rem;">
-<span id="careerOtpCountdown" style="color: #5b6475;">Resend available in <strong id="careerTimerVal">30</strong>s</span>
-<button id="btnResendCareerOtp" type="button" style="display: none; background: none; border: none; color: #12306b; font-weight: 700; cursor: pointer; text-decoration: underline; padding: 0;">Resend Email OTP</button>
-</div>
-<div id="careerOtpStatus" style="font-size: 0.75rem; margin-top: 0.5rem; display: none;"></div>
-</div>
 </form>
 </div>
 </div>

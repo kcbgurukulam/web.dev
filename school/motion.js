@@ -121,11 +121,8 @@
     });
   });
 
-  // 6. Web3Forms Smart Client-Side Submission (Generic Forms)
+  // 6. Web3Forms Smart Client-Side Submission (All Forms)
   document.querySelectorAll('form[action="https://api.web3forms.com/submit"]').forEach(function(form) {
-    if (form.id === 'admissions-enquiry' || form.id === 'careerContactForm') {
-      return; // Handled by specialized OTP verification engines
-    }
     var submitBtn = form.querySelector('button[type="submit"]');
     var originalBtnHtml = submitBtn ? submitBtn.innerHTML : '';
     
@@ -163,7 +160,6 @@
       var formData = new FormData(form);
       var object = Object.fromEntries(formData);
       
-      // Cyber Defense: Sanitize, trim and limit string lengths to stop payload abuse
       for (var key in object) {
         if (typeof object[key] === 'string') {
           object[key] = object[key].trim().slice(0, 1500);
@@ -182,633 +178,58 @@
       .then(function(response) {
         return response.json();
       })
-      .then(function(res) {
-        if (res.success) {
+      .then(function(data) {
+        if (data.success) {
           resultBox.style.background = '#e6f8ed';
           resultBox.style.color = '#0e7039';
           resultBox.style.border = '1px solid #34c759';
+          resultBox.textContent = '✓ Thank you! Your enquiry has been received. Our team will contact you shortly.';
           form.reset();
-          setTimeout(function() {
-            window.location.href = 'thankyou.html';
-          }, 1200);
+          var redirectUrl = form.querySelector('input[name="redirect"]');
+          if (redirectUrl && redirectUrl.value) {
+            setTimeout(function() {
+              window.location.href = redirectUrl.value;
+            }, 800);
+          }
         } else {
           resultBox.style.background = '#fdebee';
           resultBox.style.color = '#c5221f';
           resultBox.style.border = '1px solid #ea4335';
-          resultBox.textContent = '⚠ ' + (res.message || 'Submission error. Please call +91 8331949000.');
+          resultBox.textContent = data.message || 'Something went wrong. Please call us directly.';
         }
       })
-      .catch(function(err) {
-        console.warn('AJAX submission error, using native form submit:', err);
-        // Fallback: If network/CORS blocks fetch, submit natively so lead is NEVER lost
-        form.removeEventListener('submit', arguments.callee);
-        form.submit();
+      .catch(function(error) {
+        resultBox.style.background = '#fdebee';
+        resultBox.style.color = '#c5221f';
+        resultBox.style.border = '1px solid #ea4335';
+        resultBox.textContent = 'Unable to send online. Please call +91 8331949000 or use WhatsApp.';
       })
       .finally(function() {
-        // Cooldown: Keep button disabled for 3 seconds to prevent double/spam submissions
-        setTimeout(function() {
-          isSubmitting = false;
-          if (submitBtn) {
-            submitBtn.disabled = false;
-            submitBtn.style.opacity = '1';
-            submitBtn.innerHTML = originalBtnHtml;
-          }
-        }, 3000);
+        isSubmitting = false;
+        if (submitBtn) {
+          submitBtn.disabled = false;
+          submitBtn.style.opacity = '1';
+          submitBtn.innerHTML = originalBtnHtml;
+        }
       });
     });
   });
 
-  // 7. Admission Enquiry Form: Send Enquiry -> SMS OTP Verification -> Auto Submit
-  (function initEnquirySmsOtpFlow() {
-    var form = document.getElementById('admissions-enquiry') || document.querySelector('.enquiry-form-card form');
-    var mobileInput = document.getElementById('mobile');
-    var studentNameInput = document.getElementById('student_name');
-    var parentNameInput = document.getElementById('parent_name');
-    var gradeSelect = document.getElementById('grade');
-    var submitBtn = document.getElementById('btnEnquirySubmit');
-    var submitText = document.getElementById('btnSubmitText');
-    var submitIcon = document.getElementById('btnSubmitIcon');
-    var smsOtpBox = document.getElementById('otpInputContainer') || document.getElementById('smsOtpBox');
-    var smsOtpInput = document.getElementById('smsOtp') || document.getElementById('smsOtpInput');
-    var verifySmsBtn = document.getElementById('btnVerifySmsOtp');
-    var resendSmsBtn = document.getElementById('btnResendSmsOtp');
-    var sentMobileNumber = document.getElementById('sentMobileNumber');
-    var statusNotice = document.getElementById('otpVerificationStatus') || document.getElementById('smsStatusNotice');
-    var timerCountdown = document.getElementById('otpCountdown');
-    var timerVal = document.getElementById('timerVal');
+  // 7. Dynamic WhatsApp Prefill Sync
+  (function initWhatsAppSync() {
+    var form = document.getElementById('admissions-enquiry');
     var waBtn = document.getElementById('btnWhatsAppDirect');
-
-    if (!form || !mobileInput || !submitBtn) return;
-
-    var isVerified = false;
-    var isSendingOtp = false;
-    var timerInterval = null;
-    var auth = null;
-    window.confirmationResult = null;
-
-    if (window.firebase && window.firebaseConfig) {
-      try {
-        if (!firebase.apps || !firebase.apps.length) {
-          firebase.initializeApp(window.firebaseConfig);
-        }
-        auth = firebase.auth();
-      } catch (e) {
-        console.warn('Firebase init error:', e);
-      }
+    if (!form || !waBtn) return;
+    function sync() {
+      var sName = (document.getElementById('student_name') || {}).value || '';
+      var grade = (document.getElementById('grade') || {}).value || '';
+      var text = 'Hello KCB Gurukulam, I would like to enquire about Admissions 2026-27.';
+      if (sName) text += ' Student: ' + sName.trim() + '.';
+      if (grade) text += ' Grade: ' + grade + '.';
+      waBtn.href = 'https://wa.me/918332949000?text=' + encodeURIComponent(text);
     }
-
-    function setNotice(msg, type) {
-      if (!statusNotice) return;
-      statusNotice.style.display = 'block';
-      if (type === 'error') {
-        statusNotice.style.background = '#fdebee';
-        statusNotice.style.color = '#c5221f';
-        statusNotice.style.border = '1px solid #ea4335';
-        statusNotice.style.padding = '0.5rem 0.75rem';
-        statusNotice.style.borderRadius = '0.35rem';
-        statusNotice.style.marginTop = '0.5rem';
-        statusNotice.innerHTML = '⚠ ' + msg;
-      } else if (type === 'success') {
-        statusNotice.style.background = '#e6f8ed';
-        statusNotice.style.color = '#0e7039';
-        statusNotice.style.border = '1px solid #34c759';
-        statusNotice.style.padding = '0.5rem 0.75rem';
-        statusNotice.style.borderRadius = '0.35rem';
-        statusNotice.style.marginTop = '0.5rem';
-        statusNotice.innerHTML = '✓ ' + msg;
-      } else {
-        statusNotice.style.background = '#eef3ff';
-        statusNotice.style.color = '#12306b';
-        statusNotice.style.border = '1px solid #1D9BD8';
-        statusNotice.style.padding = '0.5rem 0.75rem';
-        statusNotice.style.borderRadius = '0.35rem';
-        statusNotice.style.marginTop = '0.5rem';
-        statusNotice.innerHTML = msg;
-      }
-    }
-
-    function getRecaptchaVerifier() {
-      var containerId = document.getElementById('otpRecaptcha') ? 'otpRecaptcha' : 'recaptcha-container';
-      if (!window.recaptchaVerifier) {
-        window.recaptchaVerifier = new firebase.auth.RecaptchaVerifier(containerId, {
-          'size': 'invisible',
-          'callback': function(response) {
-            // reCAPTCHA solved
-          },
-          'expired-callback': function() {
-            if (window.recaptchaVerifier) {
-              window.recaptchaVerifier.clear();
-              window.recaptchaVerifier = null;
-            }
-          }
-        });
-      }
-      return window.recaptchaVerifier;
-    }
-
-    function startCooldown(seconds) {
-      clearInterval(timerInterval);
-      var timeLeft = seconds;
-      if (resendSmsBtn) resendSmsBtn.style.display = 'none';
-      if (timerCountdown) timerCountdown.style.display = 'inline';
-
-      timerInterval = setInterval(function() {
-        timeLeft--;
-        if (timerVal) timerVal.textContent = timeLeft;
-        if (timeLeft <= 0) {
-          clearInterval(timerInterval);
-          if (resendSmsBtn && !isVerified) resendSmsBtn.style.display = 'inline-block';
-          if (timerCountdown) timerCountdown.style.display = 'none';
-        }
-      }, 1000);
-    }
-
-    function validateFields() {
-      if (studentNameInput && !studentNameInput.value.trim()) {
-        alert('Please enter Student Name.');
-        studentNameInput.focus();
-        return false;
-      }
-      if (parentNameInput && !parentNameInput.value.trim()) {
-        alert('Please enter Parent / Guardian Name.');
-        parentNameInput.focus();
-        return false;
-      }
-      var mob = mobileInput.value.replace(/[^0-9]/g, '');
-      if (mob.length !== 10 || !/^[6-9]\d{9}$/.test(mob)) {
-        alert('Please enter a valid 10-digit Indian mobile number.');
-        mobileInput.focus();
-        return false;
-      }
-      if (gradeSelect && !gradeSelect.value) {
-        alert('Please select Seeking Admission For class/grade.');
-        gradeSelect.focus();
-        return false;
-      }
-      return true;
-    }
-
-    function sendSmsOtp() {
-      if (!validateFields()) return;
-      var mobile = mobileInput.value.replace(/[^0-9]/g, '');
-
-      isSendingOtp = true;
-      submitBtn.disabled = true;
-      submitBtn.style.opacity = '0.75';
-      if (submitText) submitText.textContent = 'Sending SMS OTP...';
-      if (submitIcon) submitIcon.textContent = 'hourglass_top';
-
-      setNotice('Sending 6-digit SMS verification code to +91 ' + mobile + '...', 'info');
-
-      if (sentMobileNumber) sentMobileNumber.textContent = '+91 ' + mobile;
-      if (smsOtpBox) {
-        smsOtpBox.style.display = 'block';
-        smsOtpBox.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-      }
-      if (smsOtpInput) {
-        smsOtpInput.value = '';
-        smsOtpInput.focus();
-      }
-
-      startCooldown(30);
-
-      if (window.firebase && auth) {
-        try {
-          var verifier = getRecaptchaVerifier();
-          var fullNumber = '+91' + mobile;
-
-          auth.signInWithPhoneNumber(fullNumber, verifier)
-            .then(function(confirmationResult) {
-              window.confirmationResult = confirmationResult;
-              isSendingOtp = false;
-              submitBtn.disabled = false;
-              submitBtn.style.opacity = '1';
-              if (submitText) submitText.textContent = 'Enter SMS OTP Below';
-              if (submitIcon) submitIcon.textContent = 'sms';
-              setNotice('✓ 6-Digit SMS OTP sent to +91 ' + mobile + '! Please enter the code below to complete your enquiry.', 'success');
-            })
-            .catch(function(error) {
-              console.warn('Firebase SMS error:', error);
-              isSendingOtp = false;
-              submitBtn.disabled = false;
-              submitBtn.style.opacity = '1';
-              if (submitText) submitText.textContent = 'Send Enquiry';
-              if (submitIcon) submitIcon.textContent = 'send';
-
-              var errMessage = 'Unable to deliver SMS OTP to +91 ' + mobile + '. Please check the number or use 1-Click WhatsApp Enquiry.';
-              if (error && error.code === 'auth/invalid-phone-number') {
-                errMessage = 'Invalid mobile number format. Please check the 10-digit number.';
-              } else if (error && error.code === 'auth/too-many-requests') {
-                errMessage = 'SMS attempt limit reached for this number. Please try again later or use 1-Click WhatsApp.';
-              }
-              setNotice(errMessage, 'error');
-              if (window.recaptchaVerifier) {
-                window.recaptchaVerifier.clear();
-                window.recaptchaVerifier = null;
-              }
-            });
-        } catch (err) {
-          console.warn('Firebase signInWithPhoneNumber error:', err);
-          isSendingOtp = false;
-          submitBtn.disabled = false;
-          submitBtn.style.opacity = '1';
-          if (submitText) submitText.textContent = 'Send Enquiry';
-          if (submitIcon) submitIcon.textContent = 'send';
-          setNotice('SMS service unavailable. Please contact us via 1-Click WhatsApp Enquiry below.', 'error');
-        }
-      } else {
-        isSendingOtp = false;
-        submitBtn.disabled = false;
-        submitBtn.style.opacity = '1';
-        if (submitText) submitText.textContent = 'Send Enquiry';
-        if (submitIcon) submitIcon.textContent = 'send';
-        setNotice('SMS service initializing. Please verify mobile number or use 1-Click WhatsApp.', 'error');
-      }
-    }
-
-    // Main Button Click: "Send Enquiry"
-    submitBtn.addEventListener('click', function(e) {
-      e.preventDefault();
-      if (isVerified) {
-        submitForm();
-        return;
-      }
-      if (!window.confirmationResult) {
-        sendSmsOtp();
-      } else {
-        if (smsOtpInput && smsOtpInput.value.length === 6) {
-          verifyOtpAndSubmit();
-        } else {
-          if (smsOtpBox) smsOtpBox.style.display = 'block';
-          if (smsOtpInput) smsOtpInput.focus();
-          setNotice('Please enter the 6-digit SMS code received on your phone.', 'info');
-        }
-      }
-    });
-
-    if (resendSmsBtn) {
-      resendSmsBtn.addEventListener('click', function(e) {
-        e.preventDefault();
-        sendSmsOtp();
-      });
-    }
-
-    function verifyOtpAndSubmit() {
-      var code = smsOtpInput ? smsOtpInput.value.trim() : '';
-
-      if (!code || code.length !== 6 || !/^\d{6}$/.test(code)) {
-        setNotice('Please enter the complete 6-digit SMS verification code.', 'error');
-        if (smsOtpInput) smsOtpInput.focus();
-        return;
-      }
-
-      if (!window.confirmationResult) {
-        setNotice('Please click "Send Enquiry" first to receive your SMS code.', 'error');
-        return;
-      }
-
-      if (verifySmsBtn) {
-        verifySmsBtn.disabled = true;
-        verifySmsBtn.innerHTML = '<span>Verifying...</span>';
-      }
-
-      window.confirmationResult.confirm(code)
-        .then(function(result) {
-          isVerified = true;
-          clearInterval(timerInterval);
-
-          setNotice('✓ Mobile verified successfully via SMS! Submitting your enquiry...', 'success');
-
-          if (verifySmsBtn) {
-            verifySmsBtn.disabled = true;
-            verifySmsBtn.style.background = '#34c759';
-            verifySmsBtn.innerHTML = '<span>Verified ✓</span>';
-          }
-          if (submitBtn) {
-            submitBtn.disabled = true;
-            submitBtn.style.opacity = '0.9';
-            if (submitText) submitText.textContent = 'Enquiry Confirmed! Redirecting...';
-            if (submitIcon) submitIcon.textContent = 'check_circle';
-          }
-
-          // Submit the form
-          setTimeout(function() {
-            submitForm();
-          }, 600);
-        })
-        .catch(function(smsErr) {
-          console.warn('SMS verify error:', smsErr);
-          setNotice('Incorrect 6-digit SMS OTP code. Please check your phone SMS and try again.', 'error');
-          if (verifySmsBtn) {
-            verifySmsBtn.disabled = false;
-            verifySmsBtn.innerHTML = '<span>Confirm &amp; Submit</span><span class="material-symbols-outlined" style="font-size: 18px;">verified</span>';
-          }
-        });
-    }
-
-    function submitForm() {
-      if (form) {
-        form.submit();
-      }
-    }
-
-    if (verifySmsBtn) {
-      verifySmsBtn.addEventListener('click', function(e) {
-        e.preventDefault();
-        verifyOtpAndSubmit();
-      });
-    }
-
-    if (smsOtpInput) {
-      smsOtpInput.addEventListener('input', function() {
-        this.value = this.value.replace(/[^0-9]/g, '');
-        if (this.value.length === 6 && !isVerified) {
-          verifyOtpAndSubmit();
-        }
-      });
-    }
-
-    // Dynamic 1-Click WhatsApp Enquiry Link
-    if (waBtn) {
-      function syncWhatsAppLink() {
-        var sName = studentNameInput ? studentNameInput.value.trim() : '';
-        var pName = parentNameInput ? parentNameInput.value.trim() : '';
-        var grade = gradeSelect ? gradeSelect.value : '';
-        var mob = mobileInput ? mobileInput.value.trim() : '';
-        var text = 'Namaste KCB Gurukulam! I would like to enquire about Admissions 2026-27.';
-        if (sName) text += ' Student: ' + sName + '.';
-        if (grade) text += ' Grade: ' + grade + '.';
-        if (pName) text += ' Parent: ' + pName + '.';
-        if (mob) text += ' Phone: +91 ' + mob + '.';
-        waBtn.href = 'https://wa.me/918332949000?text=' + encodeURIComponent(text);
-      }
-      form.addEventListener('input', syncWhatsAppLink);
-      form.addEventListener('change', syncWhatsAppLink);
-    }
-  })();
-
-  // 8. Career / Direct Contact Form: Email OTP Verification Engine
-  (function initCareerEmailOtpFlow() {
-    var form = document.getElementById('careerContactForm');
-    var nameInput = document.getElementById('career_name');
-    var phoneInput = document.getElementById('career_phone');
-    var emailInput = document.getElementById('career_email');
-    var typeSelect = document.getElementById('career_type');
-    var messageInput = document.getElementById('career_message');
-    var submitBtn = document.getElementById('btnCareerSubmit');
-    var submitText = document.getElementById('btnCareerSubmitText');
-    var submitIcon = document.getElementById('btnCareerSubmitIcon');
-    var otpContainer = document.getElementById('careerOtpContainer');
-    var otpInput = document.getElementById('careerOtpInput');
-    var verifyBtn = document.getElementById('btnVerifyCareerOtp');
-    var resendBtn = document.getElementById('btnResendCareerOtp');
-    var sentEmailSpan = document.getElementById('sentCareerEmail');
-    var statusNotice = document.getElementById('careerOtpStatus');
-    var timerCountdown = document.getElementById('careerOtpCountdown');
-    var timerVal = document.getElementById('careerTimerVal');
-
-    if (!form || !emailInput || !submitBtn) return;
-
-    var isVerified = false;
-    var isSendingOtp = false;
-    var timerInterval = null;
-    var currentToken = '';
-
-    function setNotice(msg, type) {
-      if (!statusNotice) return;
-      statusNotice.style.display = 'block';
-      if (type === 'error') {
-        statusNotice.style.background = '#fdebee';
-        statusNotice.style.color = '#c5221f';
-        statusNotice.style.border = '1px solid #ea4335';
-        statusNotice.style.padding = '0.5rem 0.75rem';
-        statusNotice.style.borderRadius = '0.35rem';
-        statusNotice.style.marginTop = '0.5rem';
-        statusNotice.innerHTML = '⚠ ' + msg;
-      } else if (type === 'success') {
-        statusNotice.style.background = '#e6f8ed';
-        statusNotice.style.color = '#0e7039';
-        statusNotice.style.border = '1px solid #34c759';
-        statusNotice.style.padding = '0.5rem 0.75rem';
-        statusNotice.style.borderRadius = '0.35rem';
-        statusNotice.style.marginTop = '0.5rem';
-        statusNotice.innerHTML = '✓ ' + msg;
-      } else {
-        statusNotice.style.background = '#eef3ff';
-        statusNotice.style.color = '#12306b';
-        statusNotice.style.border = '1px solid #1D9BD8';
-        statusNotice.style.padding = '0.5rem 0.75rem';
-        statusNotice.style.borderRadius = '0.35rem';
-        statusNotice.style.marginTop = '0.5rem';
-        statusNotice.innerHTML = msg;
-      }
-    }
-
-    function startCooldown(seconds) {
-      clearInterval(timerInterval);
-      var timeLeft = seconds;
-      if (resendBtn) resendBtn.style.display = 'none';
-      if (timerCountdown) timerCountdown.style.display = 'inline';
-
-      timerInterval = setInterval(function() {
-        timeLeft--;
-        if (timerVal) timerVal.textContent = timeLeft;
-        if (timeLeft <= 0) {
-          clearInterval(timerInterval);
-          if (resendBtn && !isVerified) resendBtn.style.display = 'inline-block';
-          if (timerCountdown) timerCountdown.style.display = 'none';
-        }
-      }, 1000);
-    }
-
-    function validateFields() {
-      if (nameInput && !nameInput.value.trim()) {
-        alert('Please enter your full name.');
-        nameInput.focus();
-        return false;
-      }
-      var ph = phoneInput ? phoneInput.value.replace(/[^0-9]/g, '') : '';
-      if (phoneInput && (ph.length !== 10 || !/^[6-9]\d{9}$/.test(ph))) {
-        alert('Please enter a valid 10-digit mobile number.');
-        phoneInput.focus();
-        return false;
-      }
-      var em = emailInput.value.trim();
-      var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-      if (!em || !emailRegex.test(em)) {
-        alert('Please enter a valid email address.');
-        emailInput.focus();
-        return false;
-      }
-      if (typeSelect && !typeSelect.value) {
-        alert('Please select enquiry type.');
-        typeSelect.focus();
-        return false;
-      }
-      if (messageInput && !messageInput.value.trim()) {
-        alert('Please enter your message or qualifications.');
-        messageInput.focus();
-        return false;
-      }
-      return true;
-    }
-
-    // Helper to send request with fallback to PHP endpoint
-    function callApi(endpoint, fallbackEndpoint, payload) {
-      return fetch(endpoint, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(payload)
-      }).then(function(res) {
-        if (!res.ok && res.status === 404 && fallbackEndpoint) {
-          return fetch(fallbackEndpoint, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(payload)
-          }).then(function(r) { return r.json(); });
-        }
-        return res.json();
-      });
-    }
-
-    function sendEmailOtp() {
-      if (!validateFields()) return;
-      var email = emailInput.value.trim().toLowerCase();
-
-      isSendingOtp = true;
-      submitBtn.disabled = true;
-      submitBtn.style.opacity = '0.75';
-      if (submitText) submitText.textContent = 'Sending Verification OTP...';
-      if (submitIcon) submitIcon.textContent = 'hourglass_top';
-
-      setNotice('Sending 6-digit verification code to ' + email + '...', 'info');
-      if (sentEmailSpan) sentEmailSpan.textContent = email;
-      if (otpContainer) {
-        otpContainer.style.display = 'block';
-        otpContainer.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-      }
-      if (otpInput) {
-        otpInput.value = '';
-        otpInput.focus();
-      }
-
-      startCooldown(30);
-
-      callApi('/api/send-otp', 'api/send-otp.php', { email: email })
-        .then(function(data) {
-          isSendingOtp = false;
-          submitBtn.disabled = false;
-          submitBtn.style.opacity = '1';
-          if (submitText) submitText.textContent = 'Resend Verification OTP';
-          if (submitIcon) submitIcon.textContent = 'refresh';
-
-          if (data && data.success) {
-            currentToken = data.token || '';
-            setNotice('Verification code sent to <strong>' + email + '</strong>! Please check your inbox or spam folder.', 'info');
-          } else {
-            setNotice(data && data.message ? data.message : 'Unable to send OTP. Please check your email and try again.', 'error');
-          }
-        })
-        .catch(function(err) {
-          console.warn('Send OTP network error:', err);
-          isSendingOtp = false;
-          submitBtn.disabled = false;
-          submitBtn.style.opacity = '1';
-          if (submitText) submitText.textContent = 'Resend Verification OTP';
-          setNotice('Could not connect to verification server. Please verify your internet connection or contact us directly.', 'error');
-        });
-    }
-
-    function verifyEmailOtp() {
-      var otp = (otpInput.value || '').trim();
-      var email = emailInput.value.trim().toLowerCase();
-
-      if (!otp || otp.length !== 6 || !/^\d{6}$/.test(otp)) {
-        setNotice('Please enter the 6-digit numeric verification code received on your email.', 'error');
-        if (otpInput) otpInput.focus();
-        return;
-      }
-
-      if (verifyBtn) {
-        verifyBtn.disabled = true;
-        verifyBtn.style.opacity = '0.75';
-        verifyBtn.innerHTML = 'Verifying...';
-      }
-
-      callApi('/api/verify-otp', 'api/verify-otp.php', {
-        email: email,
-        otp: otp,
-        token: currentToken
-      })
-      .then(function(data) {
-        if (verifyBtn) {
-          verifyBtn.disabled = false;
-          verifyBtn.style.opacity = '1';
-          verifyBtn.innerHTML = '<span>Confirm &amp; Submit</span><span class="material-symbols-outlined" style="font-size:18px;">verified</span>';
-        }
-
-        if (data && (data.verified || data.success)) {
-          isVerified = true;
-          clearInterval(timerInterval);
-          setNotice('Email verified successfully! Submitting your application now...', 'success');
-          
-          var verInput = document.getElementById('career_email_verified');
-          if (verInput) verInput.value = 'true';
-
-          setTimeout(function() {
-            form.submit();
-          }, 800);
-        } else {
-          setNotice(data && data.message ? data.message : 'Invalid OTP. Please check your email or request a new code.', 'error');
-          if (otpInput) {
-            otpInput.value = '';
-            otpInput.focus();
-          }
-        }
-      })
-      .catch(function(err) {
-        console.warn('Verify OTP error:', err);
-        if (verifyBtn) {
-          verifyBtn.disabled = false;
-          verifyBtn.style.opacity = '1';
-          verifyBtn.innerHTML = '<span>Confirm &amp; Submit</span><span class="material-symbols-outlined" style="font-size:18px;">verified</span>';
-        }
-        setNotice('Network error while verifying OTP. Please try again.', 'error');
-      });
-    }
-
-    submitBtn.addEventListener('click', function(e) {
-      e.preventDefault();
-      if (!isVerified) {
-        sendEmailOtp();
-      } else {
-        form.submit();
-      }
-    });
-
-    if (verifyBtn) {
-      verifyBtn.addEventListener('click', function(e) {
-        e.preventDefault();
-        verifyEmailOtp();
-      });
-    }
-
-    if (resendBtn) {
-      resendBtn.addEventListener('click', function(e) {
-        e.preventDefault();
-        sendEmailOtp();
-      });
-    }
-
-    if (otpInput) {
-      otpInput.addEventListener('input', function() {
-        var clean = this.value.replace(/[^0-9]/g, '');
-        if (this.value !== clean) this.value = clean;
-        if (this.value.length === 6) {
-          verifyEmailOtp();
-        }
-      });
-    }
+    form.addEventListener('input', sync);
+    form.addEventListener('change', sync);
   })();
 
   // 9. Interactive Campus Map Switcher (Google Maps / OpenStreetMap)

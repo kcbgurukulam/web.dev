@@ -303,36 +303,11 @@ Admissions open for Academic Year 2026-27. Give your child a nurturing blend of 
 <textarea class="form-textarea" id="message" name="message" placeholder="Ask about bus routes, timing, fee schedule, or sibling admissions..."></textarea>
 </div>
 
-<div id="otpRecaptcha" style="margin-bottom: 0.5rem;"></div>
-
 <!-- Primary Action Button: Send Enquiry -->
-<button class="btn-submit-form" id="btnEnquirySubmit" type="button" style="cursor: pointer; width: 100%; justify-content: center;">
+<button class="btn-submit-form" id="btnEnquirySubmit" type="submit" style="cursor: pointer; width: 100%; justify-content: center;">
 <span id="btnSubmitText">Send Enquiry</span>
 <span class="material-symbols-outlined" id="btnSubmitIcon" style="font-size: 20px;">send</span>
 </button>
-
-<!-- OTP Verification Box (Appears after clicking Send Enquiry) -->
-<div id="otpInputContainer" style="display: none; margin-top: 1.25rem; padding: 1.25rem; background: #f4f6fb; border: 2px dashed #12306b; border-radius: 0.75rem;">
-<div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.5rem;">
-<span class="material-symbols-outlined" style="color: #12306b; font-size: 22px;">sms</span>
-<h4 style="font-size: 1rem; font-weight: 700; color: #001b4b; margin: 0;">Verify Mobile via SMS OTP</h4>
-</div>
-<p style="font-size: 0.825rem; color: #5b6475; margin-bottom: 0.85rem; line-height: 1.5;">
-We have sent a 6-digit SMS OTP to <strong id="sentMobileNumber" style="color: #001b4b;">+91</strong>. Please enter it below to complete your enquiry.
-</p>
-<div style="display: flex; gap: 0.5rem; align-items: center;">
-<input class="form-input" id="smsOtp" placeholder="6-digit SMS code" type="text" maxlength="6" pattern="[0-9]{6}" style="flex: 1; letter-spacing: 0.25em; font-weight: 700; text-align: center; font-size: 1.15rem; height: 44px;">
-<button class="btn-primary" id="btnVerifySmsOtp" type="button" style="padding: 0 1.25rem; height: 44px; font-size: 0.85rem; background: #0e7039; white-space: nowrap;">
-<span>Confirm &amp; Submit</span>
-<span class="material-symbols-outlined" style="font-size: 18px;">verified</span>
-</button>
-</div>
-<div style="display: flex; justify-content: space-between; align-items: center; margin-top: 0.75rem; font-size: 0.75rem;">
-<span id="otpCountdown" style="color: #5b6475;">Resend available in <strong id="timerVal">30</strong>s</span>
-<button id="btnResendSmsOtp" type="button" style="display: none; background: none; border: none; color: #12306b; font-weight: 700; cursor: pointer; text-decoration: underline; padding: 0;">Resend SMS OTP</button>
-</div>
-<div id="otpVerificationStatus" style="font-size: 0.75rem; margin-top: 0.5rem; display: none;"></div>
-</div>
 
 <div style="text-align: center; margin-top: 1rem; padding-top: 0.75rem; border-top: 1px dashed #DDE2EE;">
 <span style="font-size: 0.8rem; color: #5b6475;">Prefer direct chat without SMS?</span>
@@ -470,20 +445,6 @@ if (e.target === this) this.classList.remove('open');
 });
 </script>
 
-<!-- Firebase SDKs for Real SMS OTP -->
-<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth-compat.js"></script>
-<script>
-window.firebaseConfig = {
-  apiKey: "AIzaSyBCJYN9GbCSeG_hmz9-s54oJLHxtzlNxCE",
-  authDomain: "kcb-gurukulam.firebaseapp.com",
-  projectId: "kcb-gurukulam",
-  storageBucket: "kcb-gurukulam.firebasestorage.app",
-  messagingSenderId: "480498852131",
-  appId: "1:480498852131:web:e6e0f3f14dc8f1d5d82c96",
-  measurementId: "G-TNYQND1PYR"
-};
-</script>
 <script src="motion.js"></script>
 </body>
 </html>
