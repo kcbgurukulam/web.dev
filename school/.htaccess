@@ -1,0 +1,40 @@
+# ==============================================================================
+# KCB GURUKULAM - CYBER DEFENSE & SECURITY HARDENING CONFIGURATION (.htaccess)
+# ==============================================================================
+
+# 1. PREVENT DIRECTORY BROWSING (HACKERS CANNOT SNOOP DIRECTORIES)
+Options -Indexes
+
+# 2. HIDE SERVER SOFTWARE SIGNATURE
+ServerSignature Off
+
+# 3. BLOCK ACCESS TO HIDDEN AND SENSITIVE FILES (.git, .env, .htaccess, config.php, etc.)
+<FilesMatch "^\.">
+    Order allow,deny
+    Deny from all
+</FilesMatch>
+<Files "config.php">
+    Order allow,deny
+    Deny from all
+</Files>
+
+# 4. HTTP SECURITY HEADERS (OWASP RECOMMENDED)
+<IfModule mod_headers.c>
+    # Prevent Clickjacking (disallow malicious iframing)
+    Header always set X-Frame-Options "SAMEORIGIN"
+    
+    # Prevent MIME-type sniffing / Drive-by downloads
+    Header always set X-Content-Type-Options "nosniff"
+    
+    # Enable legacy browser XSS filters
+    Header always set X-XSS-Protection "1; mode=block"
+    
+    # Protect privacy & referrer information
+    Header always set Referrer-Policy "strict-origin-when-cross-origin"
+    
+    # Disable unauthorized browser hardware access
+    Header always set Permissions-Policy "geolocation=(), microphone=(), camera=(), payment=()"
+</IfModule>
+
+# 5. ENFORCE UTF-8 ENCODING TO PREVENT CHAR-ENCODING ATTACKS
+AddDefaultCharset UTF-8

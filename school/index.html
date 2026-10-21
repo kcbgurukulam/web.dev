@@ -1,144 +1,875 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
+<!DOCTYPE html><html lang="en" style=""><head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Vision & Mission | Your School Name</title>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="icon" type="image/png" href="kcbg.png">
-<style>
-:root{--bg:#fff;--fg:#1f2430;--muted:#5b6475;--brand:#12306b;--accent:#e8a317;--card:#f4f6fb;--line:#dde2ee;--foot:#0d2250;
-box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
-@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#10141f;--fg:#e8ebf3;--muted:#9aa3b8;--brand:#6f94e6;--card:#192033;--line:#2a3350;--foot:#0a0e1a}}
-:root[data-theme="dark"]{--bg:#10141f;--fg:#e8ebf3;--muted:#9aa3b8;--brand:#6f94e6;--card:#192033;--line:#2a3350;--foot:#0a0e1a}
-html{scroll-padding-top:env(safe-area-inset-top,0px)}
-*{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--fg);font-family:'Poppins',system-ui,sans-serif;line-height:1.65}
-a{color:inherit;text-decoration:none}
-header{background:#12306b;color:#fff;position:sticky;top:env(safe-area-inset-top,0px);z-index:10}
-.bar{max-width:1200px;margin:auto;display:flex;align-items:center;justify-content:space-between;padding:12px 20px;gap:16px}
-.logo{font-weight:700;font-size:1.15rem;display:flex;align-items:center;gap:10px}
-.logo i{width:36px;height:36px;border-radius:50%;background:var(--accent);display:inline-block}
-nav ul{list-style:none;margin:0;padding:0;display:flex;gap:4px;align-items:center}
-nav li{position:relative}
-nav li>a{display:block;padding:10px 12px;font-size:.85rem;font-weight:500;text-transform:uppercase;letter-spacing:.3px}
-nav li:hover>a{color:var(--accent)}
-nav ul ul{display:none;position:absolute;left:0;top:100%;min-width:200px;background:#fff;border-radius:6px;box-shadow:0 8px 24px #0003;padding:6px 0;flex-direction:column;align-items:stretch}
-nav li:hover>ul{display:flex}
-nav ul ul a{color:#1f2430;padding:8px 16px;font-size:.82rem;text-transform:none}
-nav ul ul a:hover{background:#eef1f8}
-.apply{background:var(--accent);color:#1b1b1b!important;border-radius:20px;font-weight:600}
-#menu{display:none;background:none;border:1px solid #fff6;color:#fff;border-radius:6px;padding:6px 12px;font-size:1rem}
-.hero{background:linear-gradient(135deg,#12306bee,#1d4aa8cc),#12306b;color:#fff;text-align:center;padding:72px 20px 56px}
-.hero h1{margin:0 0 10px;font-size:clamp(2rem,5vw,3rem)}
-.crumb{font-size:.9rem;opacity:.9}.crumb a:hover{text-decoration:underline}
-.wrap{max-width:1100px;margin:auto;padding:0 20px}
-section{padding:56px 0}
-h2{color:var(--brand);font-size:1.7rem;margin:0 0 16px;position:relative;padding-bottom:12px}
-h2::after{content:"";position:absolute;left:0;bottom:0;width:56px;height:4px;background:var(--accent);border-radius:2px}
-.vision{display:grid;grid-template-columns:1.1fr 1fr;gap:36px;align-items:center}
-.vision p{font-size:1.1rem;color:var(--muted)}
-.ph{aspect-ratio:4/3;border-radius:14px;background:linear-gradient(135deg,var(--brand),var(--accent));display:grid;place-items:center;color:#fff;font-weight:600;text-align:center;padding:12px}
-.alt{background:var(--card)}
-ul.list{list-style:none;padding:0;margin:0;display:grid;gap:12px}
-ul.list li{background:var(--bg);border:1px solid var(--line);border-left:4px solid var(--accent);border-radius:8px;padding:12px 16px 12px 18px}
-.two{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
-.form{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:24px;max-width:560px;margin:auto}
-.form h3{margin:0 0 14px;color:var(--brand)}
-.form input,.form select,.form textarea{width:100%;padding:10px 12px;margin-bottom:10px;border:1px solid var(--line);border-radius:8px;background:var(--bg);color:var(--fg);font:inherit}
-.form button{background:var(--brand);color:#fff;border:0;border-radius:8px;padding:10px 24px;font:inherit;font-weight:600;cursor:pointer}
-footer{background:var(--foot);color:#d6dcec;padding:44px 0 20px;font-size:.9rem}
-.fg{display:grid;grid-template-columns:1.4fr 1fr 1fr 1.4fr;gap:28px}
-footer h4{color:#fff;margin:0 0 10px}footer ul{list-style:none;margin:0;padding:0}footer li{margin-bottom:6px}
-footer a:hover{color:var(--accent)}
-.copy{border-top:1px solid #ffffff22;margin-top:28px;padding-top:14px;text-align:center;font-size:.8rem}
-@media(max-width:900px){
- #menu{display:block}
- nav{display:none;position:absolute;left:0;right:0;top:100%;background:#12306b;max-height:75vh;overflow:auto;padding:8px 20px}
- nav.open{display:block}
- nav ul{flex-direction:column;align-items:flex-end;}
- nav ul ul{display:flex;position:static;background:transparent;box-shadow:none;padding:0 0 0 14px}
- nav ul ul a{color:#dfe6f7}
- .vision,.fg,.two{grid-template-columns:1fr}
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<title>KCB Gurukulam | Premier English Medium School in Adilabad | Admissions 2026-27</title>
+<meta name="description" content="KCB Gurukulam is Adilabad's premier English-medium school located beside KCB Gardens. Offering holistic education from Pre-Primary to Upper Primary with modern STEM, karate, arts & safe transport. Admissions open for 2026-27. Call +91 8331949000.">
+<meta name="keywords" content="KCB Gurukulam, KCB Gurukulam Adilabad, English medium school Adilabad, best school in Adilabad, KCB Gardens school, admissions 2026-27 Adilabad">
+<meta name="author" content="KCB Gurukulam">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://kcbgurukulam.in/">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://kcbgurukulam.in/">
+<meta property="og:site_name" content="KCB Gurukulam">
+<meta property="og:title" content="KCB Gurukulam | Premier English Medium School in Adilabad">
+<meta property="og:description" content="Holistic schooling, individual care, safe transport, and modern curriculum in Adilabad, Telangana. Admissions open for 2026-27.">
+<meta property="og:image" content="https://kcbgurukulam.in/PNG%20LOGO%20copy.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="KCB Gurukulam | Adilabad">
+<meta name="twitter:description" content="Admissions Open 2026-27 at KCB Gurukulam, Adilabad. Beside KCB Gardens.">
+<meta name="twitter:image" content="https://kcbgurukulam.in/PNG%20LOGO%20copy.jpg">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "School",
+  "name": "KCB Gurukulam",
+  "alternateName": "KCB Gurukulam English Medium School",
+  "url": "https://kcbgurukulam.in/",
+  "logo": "https://kcbgurukulam.in/PNG%20LOGO%20copy.jpg",
+  "image": "https://kcbgurukulam.in/PNG%20LOGO%20copy.jpg",
+  "description": "KCB Gurukulam is Adilabad's premier English-medium school offering holistic education from Pre-Primary to Upper Primary.",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Beside KCB Gardens, New Housing Board Road",
+    "addressLocality": "Adilabad",
+    "addressRegion": "Telangana",
+    "postalCode": "504001",
+    "addressCountry": "IN"
+  },
+  "telephone": ["+918331949000", "+918332949000"],
+  "email": ["kcbgurukulam.admissions@gmail.com", "kcbgurukulam@gmail.com"],
+  "sameAs": [
+    "https://www.facebook.com",
+    "https://www.instagram.com"
+  ]
 }
-logo{font-weight:700;font-size:1.15rem;display:flex;align-items:center;gap:10px}
-.logo img{width:54px;height:54px;border-radius:10px;background:#fff;object-fit:contain}
+</script>
+<link rel="icon" type="image/png" href="kcbg.png">
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Anton:wght@400;500;700&amp;family=Poppins:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="theme.css">
+</head>
+<body id="top"><!-- ==========================================================================
+     NAVIGATION HEADER: School Logo, Navigation Links, Apply CTA Button
+     ========================================================================== -->
+<header class="site-header">
+<div class="site-container header-nav-wrap">
+<!-- Logo & Title -->
+<a class="brand-logo-link" href="index.html">
+<img alt="KCB Gurukulam Logo" class="brand-logo-img" src="PNG LOGO copy.jpg">
+<span class="brand-name">KCB Gurukulam</span>
+</a>
+<!-- Desktop Dropdown Navigation -->
+<nav class="desktop-nav">
+<!-- About Us Dropdown -->
+<div class="nav-dropdown-item">
+<button class="nav-link-btn" type="button">
+<span class="">About Us</span>
+<span class="material-symbols-outlined" style="font-size: 16px;">expand_more</span>
+</button>
+<div class="nav-dropdown-menu">
+<a href="about.html">Vision &amp; Mission</a>
+<a href="management.html">Management &amp; Leadership</a>
+</div>
+</div>
+<!-- Admissions Dropdown -->
+<div class="nav-dropdown-item">
+<button class="nav-link-btn" type="button">
+<span class="">Admissions</span>
+<span class="material-symbols-outlined" style="font-size: 16px;">expand_more</span>
+</button>
+<div class="nav-dropdown-menu">
+<a href="admissions.html">Admission Process &amp; Guidelines</a>
+<a href="admissions.html#admissions-enquiry">Enquiry &amp; Apply</a>
+<a href="#salient-features">Fee Structure</a>
+<a href="contact.html">Contact Admissions</a>
+</div>
+</div>
+<!-- Academics Dropdown -->
+<div class="nav-dropdown-item">
+<button class="nav-link-btn" type="button">
+<span class="">Academics</span>
+<span class="material-symbols-outlined" style="font-size: 16px;">expand_more</span>
+</button>
+<div class="nav-dropdown-menu">
+<a href="preprimary.html">Pre Primary (Nursery - UKG)</a>
+<a href="primary.html">Primary (Classes I - V)</a>
+<a href="upperprimary.html">Upper Primary (Classes VI+)</a>
+<a href="#academic-wings">Academic Wings Overview</a>
+</div>
+</div>
+<!-- Life @ School Dropdown -->
+<div class="nav-dropdown-item">
+<button class="nav-link-btn" type="button">
+<span class="">Life @ School</span>
+<span class="material-symbols-outlined" style="font-size: 16px;">expand_more</span>
+</button>
+<div class="nav-dropdown-menu">
+<a href="arts.html">Arts &amp; Culture</a>
+<a href="sports.html">Sports &amp; Athletics</a>
+<a href="gallery.html">Photo Gallery</a>
+</div>
+</div>
+<!-- Others Dropdown -->
+<div class="nav-dropdown-item">
+<button class="nav-link-btn" type="button">
+<span class="">Others</span>
+<span class="material-symbols-outlined" style="font-size: 16px;">expand_more</span>
+</button>
+<div class="nav-dropdown-menu nav-menu-end">
+<a href="transport.html">Transport &amp; Bus Routes</a>
+<a href="contact.html">Contact Us</a>
+<a href="contact.html#careers">Careers</a>
+</div>
+</div>
+</nav>
+<!-- CTA & Mobile Action -->
+<div class="header-actions">
+<a class="btn-apply-header" href="#admissions-enquiry">
+<span class="">Apply Now</span>
+<span class="material-symbols-outlined" style="font-size: 14px;">arrow_forward</span>
+</a>
+<button aria-label="Open navigation menu" class="mobile-menu-toggle" type="button" onclick="document.getElementById('mobileDrawer').classList.add('open')">
+<span class="material-symbols-outlined">menu</span>
+</button>
+</div>
+</div>
+</header>
+<!-- Main Website Content -->
+<main class="page-main">
+<!-- ==========================================================================
+     HERO SECTION: Main Heading, Subtitle, Action Buttons, Metric Pills, Photo
+     ========================================================================== -->
+<section class="section-hero">
+<div class="site-container">
+<div class="hero-grid">
+<!-- Left Content -->
+<div class="hero-left-content">
+<div>
+<div class="badge-pill" style="background:#ffffff; border:1px solid rgba(29, 155, 216, 0.3); color:#001b4b;">
+<span style="width: 8px; height: 8px; border-radius: 9999px; background: #1D9BD8; display: inline-block;"></span>
+<span class="">Admissions Open 2026-27</span>
+</div>
+</div>
+<h1 class="display-title hero-title">
+              Take a better decision for your kids' future
+            </h1>
+<p class="hero-lead">
+              KCB Gurukulam, Adilabad: a place for knowledge and character building.
+            </p>
+<div class="cta-actions">
+<a class="btn-primary" href="#admissions-enquiry">
+<span class="">Apply Now</span>
+<span class="material-symbols-outlined">arrow_forward</span>
+</a>
+<a class="btn-secondary" href="#campus-location">
+<span class="">Contact Us</span>
+<span class="material-symbols-outlined">call</span>
+</a>
+</div>
+<!-- Stat Chips -->
+<div class="hero-stats-grid">
+<div class="hero-stat-card">
+<span class="material-symbols-outlined" style="font-size: 28px; color: rgb(29, 155, 216);">groups</span>
+<div>
+<p class="stat-title">1:18 Ratio*</p>
+<p class="stat-subtitle">Student-Teacher</p>
+</div>
+</div>
+<div class="hero-stat-card">
+<span class="material-symbols-outlined" style="font-size: 28px; color: rgb(122, 193, 67);">psychology</span>
+<div>
+<p class="stat-title">100%</p>
+<p class="stat-subtitle">Experiential Learning</p>
+</div>
+</div>
+<div class="hero-stat-card">
+<span class="material-symbols-outlined" style="font-size: 28px; color: rgb(247, 181, 0);">domain</span>
+<div>
+<p class="stat-title">Modern</p>
+<p class="stat-subtitle">School Building</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Right Visual Spotlight Card -->
+<div>
+<div style="background: linear-gradient(135deg, rgba(255, 255, 255, 0.96) 0%, #f4f7ff 100%); border-radius: 1.5rem; padding: 2.25rem 2rem; border: 1px solid rgba(18, 48, 107, 0.12); box-shadow: 0 15px 35px rgba(0, 27, 75, 0.08); backdrop-filter: blur(10px);">
+<div style="display: flex; align-items: center; gap: 0.85rem; margin-bottom: 1.5rem;">
+<div style="width: 48px; height: 48px; border-radius: 14px; background: #12306b; color: #feb62f; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 12px rgba(18, 48, 107, 0.2); flex-shrink: 0;">
+<span class="material-symbols-outlined" style="font-size: 28px;">verified_user</span>
+</div>
+<div>
+<h3 style="font-size: 1.25rem; font-weight: 700; color: #001b4b; margin: 0;">Schooling with Purpose</h3>
+<p style="font-size: 0.8rem; color: #5b6475; margin: 0; font-weight: 500;">CBSE Curriculum &bull; Adilabad</p>
+</div>
+</div>
+<div style="display: grid; grid-template-columns: 1fr; gap: 0.9rem;">
+<div style="display: flex; align-items: center; gap: 0.85rem; padding: 0.85rem 1rem; background: #ffffff; border-radius: 0.85rem; border: 1px solid #eef2f7; box-shadow: 0 2px 8px rgba(0,0,0,0.02);">
+<span class="material-symbols-outlined" style="color: #12306b; background: #dae2ff; padding: 8px; border-radius: 10px; font-size: 20px; flex-shrink: 0;">groups</span>
+<div>
+<div style="font-weight: 700; font-size: 0.925rem; color: #001b4b;">1:18 Mentor Ratio</div>
+<div style="font-size: 0.775rem; color: #5b6475;">Individual attention &amp; caring supervision</div>
+</div>
+</div>
+<div style="display: flex; align-items: center; gap: 0.85rem; padding: 0.85rem 1rem; background: #ffffff; border-radius: 0.85rem; border: 1px solid #eef2f7; box-shadow: 0 2px 8px rgba(0,0,0,0.02);">
+<span class="material-symbols-outlined" style="color: #285c13; background: #d6f0b8; padding: 8px; border-radius: 10px; font-size: 20px; flex-shrink: 0;">psychology</span>
+<div>
+<div style="font-weight: 700; font-size: 0.925rem; color: #001b4b;">Experiential Learning</div>
+<div style="font-size: 0.775rem; color: #5b6475;">Practical labs, activity kits &amp; phonics</div>
+</div>
+</div>
+<div style="display: flex; align-items: center; gap: 0.85rem; padding: 0.85rem 1rem; background: #ffffff; border-radius: 0.85rem; border: 1px solid #eef2f7; box-shadow: 0 2px 8px rgba(0,0,0,0.02);">
+<span class="material-symbols-outlined" style="color: #7f5700; background: #ffdeae; padding: 8px; border-radius: 10px; font-size: 20px; flex-shrink: 0;">directions_bus</span>
+<div>
+<div style="font-weight: 700; font-size: 0.925rem; color: #001b4b;">Dedicated Transport</div>
+<div style="font-size: 0.775rem; color: #5b6475;">Speed governed with personal conductor care</div>
+</div>
+</div>
+</div>
+<div style="margin-top: 1.5rem; padding-top: 1.25rem; border-top: 1px solid #eef2f7; display: flex; align-items: center; justify-content: space-between;">
+<span style="font-size: 0.825rem; font-weight: 600; color: #001b4b;">Admissions Open (Nursery to 7th)</span>
+<a href="admissions.html" style="font-size: 0.825rem; font-weight: 700; color: #12306b; text-decoration: underline; text-underline-offset: 3px;">Enquire &rarr;</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- ==========================================================================
+     WHY KCB GURUKULAM: Campus Overview & Environment Photo Placeholder
+     ========================================================================== -->
+<section class="page-section" id="why-us">
+<div class="site-container">
+<div class="hero-grid">
+<div class="hero-left-content">
+<div>
+<span class="badge-pill badge-amber">Campus Environment</span>
+</div>
+<h2 class="display-title" style="font-size: 2.25rem;">
+              Why KCB Gurukulam is the best for your child
+            </h2>
+<div style="display: flex; flex-direction: column; gap: 1rem; color: #444650; font-size: 1.05rem;">
+<p class="">
+                The first look at our campus is decisive. It is constructed without disturbing the natural topography and in green surroundings, away from the noisy environs.
+              </p>
+<p style="font-size: 0.95rem;" class="">
+                The campus is located in the close vicinity of the fast developing residential colonies in Adilabad town, providing peace, clean air, and unmatched convenience for everyday commute.
+              </p>
+</div>
+<div style="padding-top: 0.5rem; display: flex; gap: 1.25rem; flex-wrap: wrap;">
+<a class="link-animated" href="about.html">
+<span style="text-decoration: underline; text-underline-offset: 4px;" class="">Read our vision and mission</span>
+<span class="material-symbols-outlined" style="font-size: 1.15rem;">arrow_forward</span>
+</a>
+<a class="link-animated" href="management.html">
+<span style="text-decoration: underline; text-underline-offset: 4px;" class="">Meet our Leadership &amp; Team</span>
+<span class="material-symbols-outlined" style="font-size: 1.15rem;">arrow_forward</span>
+</a>
+</div>
+</div>
+<div>
+<div class="feature-photo-card" style="max-width: 540px;">
+<img src="school-building.jpg" alt="KCB Gurukulam School Building - Beside KCB Gardens, Adilabad" style="width: 100%; height: auto; aspect-ratio: 5/2; object-fit: cover; display: block;" loading="lazy">
+<div class="photo-badge">
+<span class="material-symbols-outlined" style="font-size:16px; color:#F7B500;">domain</span>
+<span>KCB Gurukulam Campus Building</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- ==========================================================================
+     FOUNDER'S VISION: K C Bhargava Profile, Vision Quote & Gurukul Pillars
+     ========================================================================== -->
+<section class="page-section bg-light-tint" id="founder-vision">
+<div class="site-container">
+<div class="founder-grid">
+<!-- Vision Content -->
+<div style="display: flex; flex-direction: column; gap: 1.5rem;">
+<div>
+<span class="badge-pill badge-blue">Inspirational Leadership</span>
+</div>
+<h2 class="display-title" style="font-size: 2.25rem;">
+              The Founder's Vision
+            </h2>
+<div class="quote-box">
+<p class="quote-text">
+                "K C Bhargava, a software professional and once an NRI, has established a wonderful place that truly translates his vision and love for education and his passion for serving the people of Adilabad. At KCB Gurukulam, value education and life skills development is coordinated with character education, in order to sculpt a child into a complete student of the present and a strong personality in the future."
+              </p>
+</div>
+<!-- Gurukul Methodology Cards -->
+<div class="gurukul-cards-grid">
+<div class="gurukul-card">
+<div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.5rem;">
+<span class="material-symbols-outlined" style="font-size: 24px; color: rgb(18, 48, 107);">temple_hindu</span>
+<h4 style="font-weight: 700; font-size: 1rem; color: rgb(0, 27, 75);" class="">Guru-Shishya Tradition Revived</h4>
+</div>
+<p style="font-size: 0.875rem; color: rgb(68, 70, 80); line-height: 1.6;" class="">
+                  Nurturing intimate mentor-disciple bonds that encourage respectful curiosity, moral depth, and holistic emotional grounding.
+                </p>
+</div>
+<div class="gurukul-card">
+<div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.5rem;">
+<span class="material-symbols-outlined" style="font-size: 24px; color: rgb(122, 193, 67);">science</span>
+<h4 style="font-weight: 700; font-size: 1rem; color: rgb(0, 27, 75);" class="">Experiential Learning Benefits</h4>
+</div>
+<p style="font-size: 0.875rem; color: rgb(68, 70, 80); line-height: 1.6;" class="">
+                  Transforming rote theoretical lessons into real-world observation, scientific experimentation, and tactile classroom activities.
+                </p>
+</div>
+</div>
+</div>
+<!-- Founder Photo (Right-aligned card, text perfectly centered under photo) -->
+<div class="founder-photo-col" style="display: flex; flex-direction: column; align-items: center; text-align: center; width: 240px; justify-self: end;">
+<div class="founder-card" style="padding:0; overflow:hidden; border:none; box-shadow:0 10px 25px rgba(18,48,107,0.12); width:240px; height:270px; min-height:auto; margin:0 auto;">
+<img src="founder.jpg" alt="K C Bhargava, Founder &amp; Correspondent" style="width:100%; height:100%; object-fit:cover; object-position:top center; display:block;">
+</div>
+<div style="margin-top: 1rem; text-align: center; width: 100%;">
+<h4 style="font-weight: 700; font-size: 1.125rem; color: rgb(0, 27, 75); text-align: center; margin: 0;" class="">K C Bhargava</h4>
+<p style="font-size: 0.75rem; color: rgb(68, 70, 80); text-transform: uppercase; letter-spacing: 0.05em; font-weight: 500; text-align: center; margin-top: 4px;" class="">Founder &amp; Correspondent</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- ==========================================================================
+     ACADEMIC WINGS: Foundational, Preparatory, and Middle Stage Cards
+     ========================================================================== -->
+<section class="page-section" id="academic-wings">
+<div class="site-container">
+<div class="section-header-centered">
+<span class="badge-pill badge-cyan">Curriculum &amp; Wings</span>
+<h2 class="display-title" style="font-size: 2.25rem;">Academic Wings</h2>
+<p style="font-size: 0.95rem; color: rgb(68, 70, 80);" class="">
+            Carefully structured stages following foundational, preparatory, and middle years education.
+          </p>
+</div>
+<div class="wings-grid">
+<!-- Pre Primary -->
+<div class="wing-card wing-card-cyan" onclick="location.href='preprimary.html'">
+<div>
+<div class="wing-photo-thumb thumb-cyan">
+<span class="material-symbols-outlined" style="font-size: 32px; color: rgb(29, 155, 216); margin-bottom: 0.25rem;">toys</span>
+<p style="font-size: 0.75rem; font-weight: 700; text-transform: uppercase; color: rgb(0, 27, 75);" class="">Photo Placeholder</p>
+<p style="font-size: 0.6875rem; color: rgb(68, 70, 80);" class="">Pre-Primary Wing Activity</p>
+</div>
+<span class="badge-pill badge-cyan" style="margin-bottom: 0.75rem;">Foundational Stage</span>
+<h3 style="font-weight: 700; font-size: 1.25rem; color: rgb(0, 27, 75); margin-bottom: 0.5rem;" class="">Pre Primary</h3>
+<p style="font-size: 0.875rem; color: rgb(68, 70, 80); line-height: 1.6;" class="">
+                An effective and innovative method of teaching for our youngest students, fostering curiosity, sensory growth, and joyful play-based discovery.
+              </p>
+</div>
+<div style="padding-top: 1.25rem; border-top: 1px solid #DDE2EE; margin-top: 1.25rem;">
+<a href="preprimary.html" style="font-size: 0.75rem; font-weight: 600; color: rgb(29, 155, 216); display: flex; align-items: center; justify-content: space-between;" class="">
+<span class="">Nursery to UKG &bull; Explore Wing</span>
+<span class="material-symbols-outlined" style="font-size: 16px;">arrow_forward</span>
+</a>
+</div>
+</div>
+<!-- Primary -->
+<div class="wing-card wing-card-amber" onclick="location.href='primary.html'">
+<div>
+<div class="wing-photo-thumb thumb-amber">
+<span class="material-symbols-outlined" style="font-size: 32px; color: rgb(127, 87, 0); margin-bottom: 0.25rem;">menu_book</span>
+<p style="font-size: 0.75rem; font-weight: 700; text-transform: uppercase; color: rgb(0, 27, 75);" class="">Photo Placeholder</p>
+<p style="font-size: 0.6875rem; color: rgb(68, 70, 80);" class="">Primary Classroom &amp; Labs</p>
+</div>
+<span class="badge-pill badge-amber" style="margin-bottom: 0.75rem;">Preparatory Stage</span>
+<h3 style="font-weight: 700; font-size: 1.25rem; color: rgb(0, 27, 75); margin-bottom: 0.5rem;" class="">Primary</h3>
+<p style="font-size: 0.875rem; color: rgb(68, 70, 80); line-height: 1.6;" class="">
+                CBSE curriculum with strong basics in language, maths and science, providing rigorous clarity and experiential concepts.
+              </p>
+</div>
+<div style="padding-top: 1.25rem; border-top: 1px solid #DDE2EE; margin-top: 1.25rem;">
+<a href="primary.html" style="font-size: 0.75rem; font-weight: 600; color: rgb(127, 87, 0); display: flex; align-items: center; justify-content: space-between;" class="">
+<span class="">Classes I to V &bull; Explore Wing</span>
+<span class="material-symbols-outlined" style="font-size: 16px;">arrow_forward</span>
+</a>
+</div>
+</div>
+<!-- Upper Primary -->
+<div class="wing-card wing-card-green" onclick="location.href='upperprimary.html'">
+<div>
+<div class="wing-photo-thumb thumb-green">
+<span class="material-symbols-outlined" style="font-size: 32px; color: rgb(40, 92, 19); margin-bottom: 0.25rem;">psychology_alt</span>
+<p style="font-size: 0.75rem; font-weight: 700; text-transform: uppercase; color: rgb(0, 27, 75);" class="">Photo Placeholder</p>
+<p style="font-size: 0.6875rem; color: rgb(68, 70, 80);" class="">Upper Primary Explorations</p>
+</div>
+<span class="badge-pill" style="background: rgb(214, 240, 184); color: rgb(40, 92, 19); margin-bottom: 0.75rem;">Middle Stage</span>
+<h3 style="font-weight: 700; font-size: 1.25rem; color: rgb(0, 27, 75); margin-bottom: 0.5rem;" class="">Upper Primary</h3>
+<p style="font-size: 0.875rem; color: rgb(68, 70, 80); line-height: 1.6;" class="">
+                Independent thinking and learning through experience, preparing students for analytical reasoning, projects, and future boards.
+              </p>
+</div>
+<div style="padding-top: 1.25rem; border-top: 1px solid #DDE2EE; margin-top: 1.25rem;">
+<a href="upperprimary.html" style="font-size: 0.75rem; font-weight: 600; color: rgb(40, 92, 19); display: flex; align-items: center; justify-content: space-between;" class="">
+<span class="">Classes VI &amp; VII (Active till 7th) &bull; Explore Wing</span>
+<span class="material-symbols-outlined" style="font-size: 16px;">arrow_forward</span>
+</a>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- ==========================================================================
+     SALIENT FEATURES: Infrastructure, Faculty, Curriculum, and Fee Highlights
+     ========================================================================== -->
+<section class="page-section bg-light-tint" id="salient-features">
+<div class="site-container">
+<div class="section-header-centered">
+<span class="badge-pill badge-blue">Quality Standard</span>
+<h2 class="display-title" style="font-size: 2.25rem;">Our Salient Features</h2>
+<p style="font-size: 0.95rem; color: rgb(68, 70, 80);" class="">
+            Highlights from our institutional charter designed to serve children and parents with excellence.
+          </p>
+</div>
+<div class="features-grid">
+<!-- Feature 1 -->
+<div class="feature-card">
+<div class="feature-icon-box" style="background: #E3F3FF; color: #1D9BD8;">
+<span class="material-symbols-outlined" style="font-size: 24px;">child_care</span>
+</div>
+<div>
+<h4 style="font-weight: 700; font-size: 1rem; color: rgb(0, 27, 75); margin-bottom: 0.25rem;" class="">Innovative Pre-Primary</h4>
+<p style="font-size: 0.825rem; color: rgb(68, 70, 80); line-height: 1.5;" class="">Effective and innovative method of teaching crafted specifically for Pre-Primary foundational years.</p>
+</div>
+</div>
+<!-- Feature 2 -->
+<div class="feature-card">
+<div class="feature-icon-box" style="background: #FFE9A8; color: #7f5700;">
+<span class="material-symbols-outlined" style="font-size: 24px;">auto_stories</span>
+</div>
+<div>
+<h4 style="font-weight: 700; font-size: 1rem; color: rgb(0, 27, 75); margin-bottom: 0.25rem;" class="">CBSE Curriculum</h4>
+<p style="font-size: 0.825rem; color: rgb(68, 70, 80); line-height: 1.5;" class="">CBSE curriculum planned for class I to X (presently active till 7th class with gradual rollout).</p>
+</div>
+</div>
+<!-- Feature 3 -->
+<div class="feature-card">
+<div class="feature-icon-box" style="background: #D6F0B8; color: #285c13;">
+<span class="material-symbols-outlined" style="font-size: 24px;">biotech</span>
+</div>
+<div>
+<h4 style="font-weight: 700; font-size: 1rem; color: rgb(0, 27, 75); margin-bottom: 0.25rem;" class="">Labs &amp; Library</h4>
+<p style="font-size: 0.825rem; color: rgb(68, 70, 80); line-height: 1.5;" class="">Fully equipped library, modern computer systems, and interactive science lab facilities.</p>
+</div>
+</div>
+<!-- Feature 4 -->
+<div class="feature-card">
+<div class="feature-icon-box" style="background: #FFD9E4; color: #A23B97;">
+<span class="material-symbols-outlined" style="font-size: 24px;">meeting_room</span>
+</div>
+<div>
+<h4 style="font-weight: 700; font-size: 1rem; color: rgb(0, 27, 75); margin-bottom: 0.25rem;" class="">Spacious Classrooms</h4>
+<p style="font-size: 0.825rem; color: rgb(68, 70, 80); line-height: 1.5;" class="">Well ventilated, natural sunlight enriched classrooms built for concentration and comfort.</p>
+</div>
+</div>
+<!-- Feature 5 -->
+<div class="feature-card">
+<div class="feature-icon-box" style="background: #E3F3FF; color: #12306b;">
+<span class="material-symbols-outlined" style="font-size: 24px;">sports_soccer</span>
+</div>
+<div>
+<h4 style="font-weight: 700; font-size: 1rem; color: rgb(0, 27, 75); margin-bottom: 0.25rem;" class="">Sprawling Playground</h4>
+<p style="font-size: 0.825rem; color: rgb(68, 70, 80); line-height: 1.5;" class="">Extensive athletic grounds to promote physical development and joyous outdoor play.</p>
+</div>
+</div>
+<!-- Feature 6 -->
+<div class="feature-card">
+<div class="feature-icon-box" style="background: #dae2ff; color: #12306b;">
+<span class="material-symbols-outlined" style="font-size: 24px;">supervisor_account</span>
+</div>
+<div>
+<h4 style="font-weight: 700; font-size: 1rem; color: rgb(0, 27, 75); margin-bottom: 0.25rem;" class="">Competent Faculty</h4>
+<p style="font-size: 0.825rem; color: rgb(68, 70, 80); line-height: 1.5;" class="">Well trained, highly qualified teaching faculty working under continuous, responsible supervision.</p>
+</div>
+</div>
+<!-- Feature 7 (Full width) -->
+<div class="feature-card feature-card-full">
+<div class="feature-icon-box" style="background: #F7B500; color: #001b4b;">
+<span class="material-symbols-outlined" style="font-size: 24px;">currency_rupee</span>
+</div>
+<div>
+<h4 style="font-weight: 700; font-size: 1rem; color: rgb(0, 27, 75); margin-bottom: 0.25rem;" class="">Economical Fee Structure</h4>
+<p style="font-size: 0.875rem; color: rgb(68, 70, 80); line-height: 1.6;" class="">Reasonable, transparent fee framework designed to genuinely meet the expectations and budget of parents from all walks of life.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- ==========================================================================
+     FACILITIES & EXTRACURRICULARS: Creative Activity Badges & Facility Photo
+     ========================================================================== -->
+<section class="page-section" id="facilities">
+<div class="site-container">
+<div class="hero-grid">
+<!-- Left info -->
+<div class="hero-left-content">
+<div>
+<span class="badge-pill badge-purple">Beyond Academics</span>
+</div>
+<h2 class="display-title" style="font-size: 2.25rem;">
+              Facilities &amp; Extracurricular Activities
+            </h2>
+<p style="color: rgb(68, 70, 80); font-size: 1rem; line-height: 1.7;" class="">
+              Our campus brings together modern generation, eco-friendly infrastructure and balanced cultural training. We believe true knowledge blooms when fine arts, public speaking, and physical discipline blend seamlessly with classroom subjects.
+            </p>
+<div>
+<p style="font-size: 0.75rem; font-weight: 700; text-transform: uppercase; color: rgb(0, 27, 75); letter-spacing: 0.05em; margin-bottom: 0.5rem;" class="">Holistic Activity Modules:</p>
+<div class="activity-badges-group">
+<a href="arts.html" class="activity-badge" style="background: rgb(227, 243, 255); color: rgb(29, 155, 216); border: 1px solid rgba(29, 155, 216, 0.3);">
+<span class="material-symbols-outlined" style="font-size: 18px;">palette</span> Painting
+</a>
+<a href="arts.html" class="activity-badge" style="background: rgb(255, 217, 228); color: rgb(162, 59, 151); border: 1px solid rgba(162, 59, 151, 0.3);">
+<span class="material-symbols-outlined" style="font-size: 18px;">music_note</span> Dance
+</a>
+<a href="arts.html" class="activity-badge" style="background: rgb(255, 233, 168); color: rgb(127, 87, 0); border: 1px solid rgba(127, 87, 0, 0.3);">
+<span class="material-symbols-outlined" style="font-size: 18px;">theater_comedy</span> Dramatics
+</a>
+<a href="sports.html" class="activity-badge" style="background: rgb(214, 240, 184); color: rgb(40, 92, 19); border: 1px solid rgba(122, 193, 67, 0.4);">
+<span class="material-symbols-outlined" style="font-size: 18px;">sports_martial_arts</span> Karate
+</a>
+</div>
+<div style="margin-top: 1.25rem; display: flex; gap: 1.5rem; flex-wrap: wrap;">
+<a class="link-animated" href="life.html">
+<span style="text-decoration: underline; text-underline-offset: 4px;">Explore Life @ School</span>
+<span class="material-symbols-outlined" style="font-size: 1.15rem;">arrow_forward</span>
+</a>
+<a class="link-animated" href="gallery.html">
+<span style="text-decoration: underline; text-underline-offset: 4px;">View Photo Gallery</span>
+<span class="material-symbols-outlined" style="font-size: 1.15rem;">arrow_forward</span>
+</a>
+</div>
+</div>
+</div>
+<!-- Right Infrastructure Photo Card -->
+<div>
+<div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(220px, 1fr)); gap:1rem;">
+<div class="feature-photo-card" style="box-shadow: 0 10px 25px rgba(0,27,75,0.08);">
+<img src="computer-lab.jpg" alt="Modern Generation IT Computer Lab at KCB Gurukulam" loading="lazy" style="height:220px; width:100%; object-fit:cover; display:block;">
+<div class="photo-badge">
+<span class="material-symbols-outlined" style="font-size:16px; color:#F7B500;">computer</span>
+<span>Modern IT Lab</span>
+</div>
+</div>
+<div class="feature-photo-card" style="box-shadow: 0 10px 25px rgba(0,27,75,0.08);">
+<img src="science-lab.jpg" alt="Equipped Science &amp; Physics Laboratory at KCB Gurukulam" loading="lazy" style="height:220px; width:100%; object-fit:cover; display:block;">
+<div class="photo-badge">
+<span class="material-symbols-outlined" style="font-size:16px; color:#F7B500;">science</span>
+<span>Science &amp; Physics Lab</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- ==========================================================================
+     ADMISSION 2026-27 SPOTLIGHT BANNER (Links to dedicated admissions.html)
+     ========================================================================== -->
+<section class=page-section id=admissions-section style="background: linear-gradient(180deg, #f1f3ff 0%, #ffffff 100%); border-top: 1px solid #DDE2EE; padding: 4.5rem 0;">
+<div class="site-container">
+<div style="background: #ffffff; border-radius: 2rem; padding: 3rem 2.5rem; border: 1px solid #DDE2EE; box-shadow: 0 15px 40px rgba(18, 48, 107, 0.08); position: relative; overflow: hidden;">
+<div style="position: absolute; top: 0; left: 0; right: 0; height: 6px; background: linear-gradient(90deg, #12306b, #1D9BD8, #feb62f);"></div>
 
+<div style="max-width: 800px; margin: 0 auto; text-align: center;">
+<div class="badge-pill badge-blue" style="margin-bottom: 1rem;">
+<span class="material-symbols-outlined" style="font-size: 16px;">how_to_reg</span>
+<span>Admissions Open for Academic Year 2026-27</span>
+</div>
+<h2 class="display-title" style="font-size: 2.35rem; color: #001b4b; margin-bottom: 1rem;">
+Begin Your Child's Journey at KCB Gurukulam
+</h2>
+<p style="font-size: 1.05rem; color: #444650; line-height: 1.7; margin-bottom: 2rem;">
+Admissions are open from Pre-Primary (Nursery, LKG, UKG) to Upper Primary (Classes I to VII). Experience holistic education with close personal care, modern STEM labs, safe bus transport, and noble character building in Adilabad.
+</p>
 
+<!-- 4 Key Highlights Grid -->
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1rem; margin-bottom: 2.5rem; text-align: left;">
+<div style="background: #f8faff; border: 1px solid #eef2f8; border-radius: 1rem; padding: 1rem;">
+<div style="display: flex; align-items: center; gap: 0.5rem; color: #1D9BD8; font-weight: 700; font-size: 0.95rem; margin-bottom: 0.25rem;">
+<span class="material-symbols-outlined" style="font-size: 20px;">groups</span>
+<span>1:18 Ratio</span>
+</div>
+<p style="font-size: 0.775rem; color: #5b6475; margin: 0;">Close individual student mentorship</p>
+</div>
+<div style="background: #f8faff; border: 1px solid #eef2f8; border-radius: 1rem; padding: 1rem;">
+<div style="display: flex; align-items: center; gap: 0.5rem; color: #285c13; font-weight: 700; font-size: 0.95rem; margin-bottom: 0.25rem;">
+<span class="material-symbols-outlined" style="font-size: 20px;">biotech</span>
+<span>Modern Labs</span>
+</div>
+<p style="font-size: 0.775rem; color: #5b6475; margin: 0;">Equipped IT &amp; Science facilities</p>
+</div>
+<div style="background: #f8faff; border: 1px solid #eef2f8; border-radius: 1rem; padding: 1rem;">
+<div style="display: flex; align-items: center; gap: 0.5rem; color: #7f5700; font-weight: 700; font-size: 0.95rem; margin-bottom: 0.25rem;">
+<span class="material-symbols-outlined" style="font-size: 20px;">security</span>
+<span>Safe Transit</span>
+</div>
+<p style="font-size: 0.775rem; color: #5b6475; margin: 0;">Speed-controlled bus with attendant</p>
+</div>
+<div style="background: #f8faff; border: 1px solid #eef2f8; border-radius: 1rem; padding: 1rem;">
+<div style="display: flex; align-items: center; gap: 0.5rem; color: #A23B97; font-weight: 700; font-size: 0.95rem; margin-bottom: 0.25rem;">
+<span class="material-symbols-outlined" style="font-size: 20px;">currency_rupee</span>
+<span>Fair Fees</span>
+</div>
+<p style="font-size: 0.775rem; color: #5b6475; margin: 0;">Transparent, economical structure</p>
+</div>
+</div>
 
-</style>
-<body>
-<header><div class="bar">
- <a class="logo" href="index.html"><img src="data:image/jpeg;base64,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" alt="KCB Gurukulam logo">KCB Gurukulam</a>
- <button id="menu" aria-label="Menu" onclick="document.querySelector('nav').classList.toggle('open')">☰</button>
- <nav><ul>
+<!-- CTA Buttons -->
+<div style="display: flex; gap: 1rem; justify-content: center; align-items: center; flex-wrap: wrap;">
+<a class="btn-primary" href="admissions.html" style="padding: 0.85rem 2rem; font-size: 1rem;">
+<span>View Admission Process &amp; Apply</span>
+<span class="material-symbols-outlined">arrow_forward</span>
+</a>
+<a class="btn-whatsapp-pill" href="https://wa.me/918332949000?text=Hello%20KCB%20Gurukulam%2C%20I%20would%20like%20to%20enquire%20about%20Admissions%202026-27." target="_blank" rel="noopener noreferrer">
+<svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+<span>Instant 1-Click WhatsApp</span>
+</a>
+<a class="btn-secondary" href="tel:+918331949000" style="padding: 0.85rem 1.5rem; font-size: 0.95rem;">
+<span class="material-symbols-outlined">call</span>
+<span>Call +91 8331949000</span>
+</a>
+</div>
+</div>
+</div>
+</div>
+</section>
 
-  <li><a href="#">About Us</a><ul><li><a href="about.html">Vision &amp; Mission</a></li><li><a href="management.html">Management</a></li></ul></li>
-  <li><a href="#">Admissions</a><ul><li><a href="#">Admission Process</a></li><li><a href="#">Scholarships</a></li><li><a href="#">FAQs</a></li><li><a href="#">Fee Structure</a></li></ul></li>
-  <li><a href="#">Academics</a><ul><li><a href="#"> Pre Primary</a></li><li><a href="#">Primary</a></li><li><a href="#">Upper Primary</a></li></ul></li>
-  <li><a href="#">Life @ School</a><ul><li><a href="#">Arts</a></li><li><a href="#">Sports</a></li><li><a href="#">Gallery</a></li></ul></li>
-  <li><a href="#">Others</a><ul><li><a href="#">Careers</a></li><li><a href="#">Alumni</a></li><li><a href="#">Transport</a></li><li><a href="#">Contact Us</a></li></ul></li>
-  <li><a class="apply" href="#">Apply Now</a></li>
- </ul></nav>
-</div></header>
+<!-- ==========================================================================
+     CAMPUS LOCATION & INTERACTIVE MAP SECTION
+     ========================================================================== -->
+<section class="page-section" id="campus-map" style="padding-top: 2rem;">
+<div class="site-container">
+<div class="section-header-centered">
+<div class="badge-pill badge-amber">
+<span class="material-symbols-outlined" style="font-size:16px;">map</span>
+<span>Find Our Campus</span>
+</div>
+<h2 class="display-title" style="font-size:2.5rem;">Campus Location &amp; Directions</h2>
+<p style="color:#5b6475;">Beside KCB Gardens, New Housing Board Road, Adilabad, Telangana - 504001</p>
+</div>
 
-<div class="hero"><h1>Vision &amp; Mission</h1><div class="crumb"><a href="index.html">Home</a> &nbsp;/&nbsp; Vision, Mission</div></div>
+<div class="content-card" style="padding:1.25rem; overflow:hidden; border-radius:1.5rem; box-shadow:0 12px 36px rgba(18, 48, 107, 0.08); background:#ffffff;">
+<!-- Map Provider Switcher -->
+<div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:0.75rem; margin-bottom:1rem; padding-bottom:0.75rem; border-bottom:1px solid #DDE2EE;">
+<div style="display:flex; align-items:center; gap:0.5rem;">
+<span class="material-symbols-outlined" style="color:#feb62f; font-size:22px;">pin_drop</span>
+<strong style="color:#001b4b; font-size:1rem;">Campus Map Navigator</strong>
+<span style="font-size:0.75rem; background:#eef3ff; color:#12306b; font-weight:700; padding:0.25rem 0.65rem; border-radius:999px;">GPS: 19.6490° N, 78.5151° E</span>
+</div>
+<div style="display:inline-flex; background:#eef3ff; border-radius:0.75rem; padding:3px; gap:4px;">
+<button type="button" id="btn-map-gmap" onclick="switchCampusMap('gmap')" style="padding:0.45rem 0.95rem; font-size:0.825rem; font-weight:700; border:none; border-radius:0.55rem; cursor:pointer; background:#12306b; color:#ffffff; font-family:'Poppins',sans-serif; display:inline-flex; align-items:center; gap:0.35rem; transition:all 0.2s ease;">
+<span class="material-symbols-outlined" style="font-size:16px;">explore</span>
+<span>Google Maps</span>
+</button>
+<button type="button" id="btn-map-osm" onclick="switchCampusMap('osm')" style="padding:0.45rem 0.95rem; font-size:0.825rem; font-weight:700; border:none; border-radius:0.55rem; cursor:pointer; background:transparent; color:#12306b; font-family:'Poppins',sans-serif; display:inline-flex; align-items:center; gap:0.35rem; transition:all 0.2s ease;">
+<span class="material-symbols-outlined" style="font-size:16px;">map</span>
+<span>OpenStreetMap</span>
+</button>
+</div>
+</div>
 
-<section><div class="wrap vision">
- <div><h2>Our Vision</h2><p>At KCB Gurukulam, we aim to be a place for knowledge and character building. Describe the kind of students and leaders you aim to nurture and the values that guide your community.</p></div>
- <div class="ph">Image placeholder<br>(Labs / Campus)</div>
-</div></section>
+<!-- Map Viewports -->
+<div style="position:relative; width:100%; height:440px; border-radius:1rem; overflow:hidden; background:#e8ecf4; border:1px solid #DDE2EE;">
+<!-- Google Maps Embed with Location Name -->
+<iframe 
+  id="map-gmap"
+  title="KCB Gurukulam Campus Location on Google Maps"
+  src="https://maps.google.com/maps?q=KCB+Gurukulam&amp;t=&amp;z=16&amp;ie=UTF8&amp;iwloc=B&amp;output=embed" 
+  width="100%" 
+  height="100%" 
+  style="border:0; display:block;" 
+  allowfullscreen="" 
+  loading="lazy" 
+  referrerpolicy="no-referrer-when-downgrade">
+</iframe>
 
-<section class="alt"><div class="wrap">
- <h2>Our Mission</h2>
- <ul class="list">
-  <li>Provide quality infrastructure and a comfortable learning environment for all students.</li>
-  <li>Ensure every student reaches proficiency in core subjects, targeting a high pass rate.</li>
-  <li>Support every student's career growth and prepare them for global challenges.</li>
-  <li>Adopt innovative teaching methods aligned with current national education policy.</li>
-  <li>Prepare students for higher education or employment after school.</li>
-  <li>Strengthen personality development and communication skills.</li>
-  <li>Partner with premier institutions of learning.</li>
-  <li>Maintain an effective Quality Management System.</li>
- </ul>
-</div></section>
+<!-- OpenStreetMap Embed -->
+<iframe 
+  id="map-osm"
+  title="KCB Gurukulam Campus Location on OpenStreetMap"
+  src="https://www.openstreetmap.org/export/embed.html?bbox=78.5020%2C19.6380%2C78.5280%2C19.6600&amp;layer=mapnik&amp;marker=19.64903%2C78.51512" 
+  width="100%" 
+  height="100%" 
+  style="border:0; display:none;" 
+  allowfullscreen="" 
+  loading="lazy">
+</iframe>
+</div>
 
-<section><div class="wrap">
- <h2>Quality Objectives</h2>
- <ul class="list two">
-  <li>Provide a conducive environment with challenging opportunities to explore.</li>
-  <li>Give all students access to current educational technology.</li>
-  <li>Foster creativity and higher-order thinking.</li>
-  <li>Inspire students to reach their potential with self-discipline and self-respect.</li>
-  <li>Improve confidence and self-esteem.</li>
-  <li>Build cooperation and nurture teamwork.</li>
-  <li>Adapt to change and overcome challenges positively.</li>
-  <li>Enhance effective communication year after year.</li>
-  <li>Run continuous assessment and evaluation every quarter.</li>
-  <li>Bring all students to a similar level of knowledge independently.</li>
- </ul>
-</div></section>
+<!-- Navigation Actions & Landmark Info -->
+<div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1.25rem; padding-top:1.25rem;">
+<div style="display:flex; flex-direction:column; gap:0.35rem;">
+<div style="display:flex; align-items:center; gap:0.5rem; color:#001b4b; font-weight:700; font-size:1rem;">
+<span class="material-symbols-outlined" style="color:#feb62f; font-size:22px;">location_on</span>
+<span>Beside KCB Gardens, New Housing Board Road, Adilabad - 504001</span>
+</div>
+<span style="font-size:0.825rem; color:#5b6475; padding-left:1.85rem;">Landmark: Near KCB Garden Function Hall, TSHB Colony / Dasnapur &bull; Plus Code: <strong>7JFWJGX8+J2</strong></span>
+</div>
 
-<section class="alt"><div class="wrap">
- <div class="form">
-  <h3>Request Information</h3>
-  <input placeholder="Name of the Student">
-  <input placeholder="Mobile Number" inputmode="tel">
-  <input placeholder="Name of the Parent">
-  <select><option>Grade — please choose</option><option>Pre-Nursery</option><option>Nursery</option><option>Prep</option><option>I</option><option>II</option></select>
-  <textarea rows="3" placeholder="Please type in your query"></textarea>
-  <button type="button">Submit</button>
- </div>
-</div></section>
+<div class="map-btn-group">
+<a class="btn-primary" href="https://www.google.com/maps/dir/?api=1&amp;destination=KCB+Gurukulam" target="_blank" rel="noopener noreferrer">
+<span class="material-symbols-outlined" style="font-size:20px;">directions</span>
+<span>Get Driving Directions</span>
+</a>
+<a class="btn-secondary" href="https://www.google.com/maps/search/?api=1&amp;query=KCB+Gurukulam" target="_blank" rel="noopener noreferrer">
+<span class="material-symbols-outlined" style="font-size:20px;">open_in_new</span>
+<span>Open Google Maps</span>
+</a>
+<a class="btn-whatsapp-pill" href="https://wa.me/918332949000?text=Hello%20KCB%20Gurukulam%2C%20please%20share%20your%20campus%20location%20and%20landmark%20directions." target="_blank" rel="noopener noreferrer">
+<svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+<span>Share on WhatsApp</span>
+</a>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- ==========================================================================
+     FOOTER: Quick Links, Academic Wings, Campus Location (Flexbox Space-Around)
+     ========================================================================== -->
+<footer class="site-footer">
+<div class="site-container">
+<div class="footer-columns-wrap">
+<!-- Col 1: Brand & Identity -->
+<div class="footer-col" style="flex: 1 1 280px; max-width: 380px;">
+<div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.5rem;">
+<img alt="KCB Gurukulam Logo" class="brand-logo-img" src="PNG LOGO copy.jpg" style="background:#ffffff; border-radius:50%; padding:2px; width:44px; height:44px;">
+<span class="brand-name" style="font-size: 1.25rem; color: #ffffff;">KCB Gurukulam</span>
+</div>
+<p style="font-size: 0.85rem; line-height: 1.6; color: rgba(228, 232, 248, 0.85);">
+A premier English medium school in Adilabad offering comprehensive education from Pre-Primary to Upper Primary. Affiliated under holistic CBSE curriculum framework.
+</p>
+<div style="display: flex; align-items: center; gap: 0.5rem; margin-top: 0.5rem;">
+<span class="material-symbols-outlined" style="color: #feb62f; font-size: 18px;">verified</span>
+<span style="font-size: 0.8rem; color: #feb62f; font-weight: 600;">Admissions Open 2026-27</span>
+</div>
+</div>
+<!-- Col 2: Quick Links -->
+<div class="footer-col">
+<h4 class="footer-col-title">Quick Links</h4>
+<ul class="footer-links-list">
+<li><a href="index.html">Home</a></li>
+<li><a href="about.html">About School</a></li>
+<li><a href="management.html">Management &amp; Leadership</a></li>
+<li><a href="admissions.html">Admissions 2026-27</a></li>
+<li><a href="transport.html">Transport &amp; Routes</a></li>
+<li><a href="contact.html">Contact Us</a></li>
+</ul>
+</div>
+<!-- Col 3: Academic Wings -->
+<div class="footer-col">
+<h4 class="footer-col-title">Academics &amp; Wings</h4>
+<ul class="footer-links-list">
+<li><a href="preprimary.html">Pre Primary Wing (Nursery - UKG)</a></li>
+<li><a href="primary.html">Primary Wing (Classes I - V)</a></li>
+<li><a href="upperprimary.html">Upper Primary Wing (Classes VI - VII)</a></li>
+<li><a href="arts.html">Arts &amp; Culture</a></li>
+<li><a href="sports.html">Sports &amp; Karate</a></li>
+<li><a href="gallery.html">Photo Gallery</a></li>
+</ul>
+</div>
+<!-- Col 4: Campus Location -->
+<div class="footer-col" style="flex: 1 1 260px;" id="campus-location">
+<h4 class="footer-col-title">Campus Location</h4>
+<div class="footer-links-list">
+<div style="display: flex; align-items: flex-start; gap: 0.5rem;">
+<span class="material-symbols-outlined" style="font-size: 18px; color: #feb62f; flex-shrink: 0; margin-top: 2px;">location_on</span>
+<span><a href="https://www.google.com/maps/dir/?api=1&amp;destination=KCB+Gurukulam" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: underline; text-underline-offset: 3px;" title="Open Driving Directions in Google Maps">Beside KCB Gardens,<br>New Housing Board Road,<br>Adilabad - 504001, Telangana</a></span>
+</div>
+<div style="display: flex; align-items: center; gap: 0.5rem; padding-top: 0.25rem;">
+<span class="material-symbols-outlined" style="font-size: 18px; color: #feb62f; flex-shrink: 0;">call</span>
+<span><a href="tel:+918331949000">+91 8331949000</a> / <a href="https://wa.me/918332949000" target="_blank" rel="noopener noreferrer" title="Chat on WhatsApp">8332949000 (WhatsApp)</a></span>
+</div>
+<div style="display: flex; align-items: flex-start; gap: 0.5rem;">
+<span class="material-symbols-outlined" style="font-size: 18px; color: #feb62f; flex-shrink: 0; margin-top: 2px;">mail</span>
+<div style="display: flex; flex-direction: column; gap: 0.35rem; font-size: 0.85rem;">
+<div><span style="font-size: 0.7rem; color: #feb62f; font-weight: 600; text-transform: uppercase; letter-spacing: 0.4px; display: block;">Admissions:</span><a href="mailto:kcbgurukulam.admissions@gmail.com">kcbgurukulam.admissions@gmail.com</a></div>
+<div><span style="font-size: 0.7rem; color: #feb62f; font-weight: 600; text-transform: uppercase; letter-spacing: 0.4px; display: block;">General:</span><a href="mailto:kcbgurukulam@gmail.com">kcbgurukulam@gmail.com</a></div>
+</div>
+</div>
+</div>
+<div class="footer-social-row">
+<a aria-label="Facebook" class="social-icon-btn social-fb" href="https://www.facebook.com" rel="noopener noreferrer" target="_blank" title="Facebook"><svg fill="currentColor" height="18" viewBox="0 0 24 24" width="18"><path d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z"></path></svg></a>
+<a aria-label="Instagram" class="social-icon-btn social-ig" href="https://www.instagram.com" rel="noopener noreferrer" target="_blank" title="Instagram"><svg fill="currentColor" height="18" viewBox="0 0 24 24" width="18"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689-.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"></path></svg></a>
+<a aria-label="YouTube" class="social-icon-btn social-yt" href="https://www.youtube.com" rel="noopener noreferrer" target="_blank" title="YouTube"><svg fill="currentColor" height="18" viewBox="0 0 24 24" width="18"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"></path></svg></a>
+<a aria-label="WhatsApp" class="social-icon-btn social-wa" href="https://wa.me/918332949000" rel="noopener noreferrer" target="_blank" title="WhatsApp Chat"><svg fill="currentColor" height="18" viewBox="0 0 24 24" width="18"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"></path></svg></a>
+</div>
+</div>
+</div>
+</div>
+<!-- Footer Bottom Bar -->
+<div class="footer-bottom-bar">
+<p>© 2026 KCB Gurukulam English Medium School, Adilabad. All rights reserved.</p>
+<div style="display: flex; align-items: center; justify-content: center; gap: 1rem; flex-wrap: wrap;">
+<a href="privacy.html">Privacy Policy</a>
+<span style="opacity: 0.35;">•</span>
+<a href="terms.html">Terms &amp; Conditions</a>
+<span style="opacity: 0.35;">•</span>
+<a href="admissions.html">Admissions 2026-27</a>
+</div>
+<p style="margin: 0; font-size: 0.72rem; color: rgba(228, 232, 248, 0.65); letter-spacing: 0.3px;">Managed by <span style="color: #feb62f; font-weight: 600;">KCB Solutions</span></p>
+</div>
+</div>
+</footer>
+<!-- ==========================================================================
+     FLOATING BACK-TO-TOP BUTTON (Pure CSS Smooth Scroll Anchor)
+     ========================================================================== -->
+<a aria-label="Scroll to top" class="back-to-top-fab" href="#top">
+<span class="material-symbols-outlined" style="font-size: 24px;">arrow_upward</span>
+</a>
 
-<footer><div class="wrap">
- <div class="fg">
-  <div><h4>KCB Gurukulam</h4><p>A Place for Knowledge and Character Building.</p></div>
-  <div><h4>Explore</h4><ul><li><a href="#">About</a></li><li><a href="#">Admissions</a></li><li><a href="#">Gallery</a></li><li><a href="#">Our Team</a></li></ul></div>
-  <div><h4>Quick Links</h4><ul><li><a href="#">Life @ School</a></li><li><a href="#">Transport</a></li><li><a href="#">Contact</a></li><li><a href="#">Careers</a></li></ul></div>
-  <div><h4>Contact Us</h4><p>Beside KCB Gardens, New Housing Board Road, Adilabad- 504001 Telangana.<br>Phone: +91 8331949000, 8332949000<br>Email: kcbgurukulam.admission@gmail.com</p></div>
- </div>
- <div class="copy">© 2026 KCB Gurukulam. All rights reserved.</div>
-</div></footer>
-</body>
+<!-- Mobile Navigation Drawer -->
+<div class="mobile-drawer" id="mobileDrawer">
+  <div class="mobile-drawer-inner">
+    <div class="mobile-drawer-header">
+      <span class="brand-name" style="color:#feb62f;">KCB Gurukulam</span>
+      <button class="mobile-close-btn" id="mobileCloseBtn" type="button" onclick="document.getElementById('mobileDrawer').classList.remove('open')">&times;</button>
+    </div>
+    <ul class="mobile-nav-list">
+      <li><a href="index.html" onclick="document.getElementById('mobileDrawer').classList.remove('open')">Home</a></li>
+      <li><a href="about.html">About Us</a></li>
+      <li><a href="management.html">Management</a></li>
+      <li><a href="admissions.html">Admissions</a></li>
+      <li><a href="preprimary.html">Pre Primary</a></li>
+      <li><a href="primary.html">Primary</a></li>
+      <li><a href="upperprimary.html">Upper Primary</a></li>
+      <li><a href="life.html">Life @ School</a></li>
+      <li><a href="arts.html">Arts</a></li>
+      <li><a href="sports.html">Sports</a></li>
+      <li><a href="gallery.html">Gallery</a></li>
+      <li><a href="transport.html">Transport</a></li>
+      <li><a href="contact.html">Contact Us</a></li>
+      <li style="margin-top:0.75rem;"><a href="admissions.html#admissions-enquiry" class="btn-primary" style="justify-content:center; color:#001b4b;" onclick="document.getElementById('mobileDrawer').classList.remove('open')">Apply Now</a></li>
+    </ul>
+  </div>
+</div>
+<script>
+document.getElementById('mobileDrawer').addEventListener('click', function(e) {
+  if (e.target === this) this.classList.remove('open');
+});
+</script>
 
+<!-- Firebase SDKs for 100% Free Real SMS OTP -->
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth-compat.js"></script>
+<script>
+  window.firebaseConfig = {
+    apiKey: "AIzaSyBCJYN9GbCSeG_hmz9-s54oJLHxtzlNxCE",
+    authDomain: "kcb-gurukulam.firebaseapp.com",
+    projectId: "kcb-gurukulam",
+    storageBucket: "kcb-gurukulam.firebasestorage.app",
+    messagingSenderId: "480498852131",
+    appId: "1:480498852131:web:e6e0f3f14dc8f1d5d82c96",
+    measurementId: "G-TNYQND1PYR"
+  };
+</script>
+
+<script src="motion.js"></script>
+</body></html>

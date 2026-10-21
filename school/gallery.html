@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<title>Photo Gallery | Campus, Sports &amp; Activities | KCB Gurukulam Adilabad</title>
+<meta name="description" content="Explore photos of KCB Gurukulam Adilabad: school campus, colorful classrooms, modern computer lab, annual sports day, karate, arts and cultural events.">
+<link rel="canonical" href="https://kcbgurukulam.in/gallery.html">
+<meta property="og:url" content="https://kcbgurukulam.in/gallery.html">
+<meta property="og:site_name" content="KCB Gurukulam">
+<meta property="og:title" content="Photo Gallery | KCB Gurukulam Adilabad">
+<meta property="og:description" content="Visual tour of life, sports, and learning at KCB Gurukulam, Adilabad.">
+<meta property="og:image" content="https://kcbgurukulam.in/PNG%20LOGO%20copy.jpg">
+<link rel="icon" type="image/png" href="kcbg.png">
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Anton:wght@400;500;700&amp;family=Poppins:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="theme.css">
+<style>
+.gal-scroll {
+  display: flex;
+  gap: 1.25rem;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  padding: 0.5rem 0.25rem 1.5rem;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+}
+.gal-scroll figure {
+  margin: 0;
+  flex: 0 0 min(280px, 80%);
+  scroll-snap-align: start;
+  cursor: zoom-in;
+  background: #ffffff;
+  border-radius: 1.25rem;
+  overflow: hidden;
+  border: 1px solid #DDE2EE;
+  box-shadow: 0 4px 16px rgba(18, 48, 107, 0.06);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.gal-scroll figure:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 16px 32px rgba(18, 48, 107, 0.14);
+  border-color: #12306b;
+}
+.gal-scroll img {
+  width: 100%;
+  aspect-ratio: 4/3;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.4s ease;
+}
+.gal-scroll figure:hover img {
+  transform: scale(1.05);
+}
+.gal-scroll .ph-box {
+  width: 100%;
+  aspect-ratio: 4/3;
+  background: linear-gradient(135deg, #E3F3FF 0%, #dae2ff 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #12306b;
+  font-weight: 600;
+  gap: 0.5rem;
+  text-align: center;
+  padding: 1rem;
+}
+.gal-scroll figcaption {
+  padding: 1rem 1.25rem;
+  font-weight: 600;
+  color: #001b4b;
+  font-size: 0.95rem;
+  background: #ffffff;
+  border-top: 1px solid #f1f3ff;
+}
+#lb {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 15, 45, 0.92);
+  display: none;
+  z-index: 2500;
+  backdrop-filter: blur(6px);
+}
+#lb.on {
+  display: flex;
+  flex-direction: column;
+}
+#lbt {
+  flex: 1;
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+}
+#lbt::-webkit-scrollbar { display: none; }
+.sl {
+  flex: 0 0 100%;
+  scroll-snap-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  padding: 60px 40px 24px;
+  color: #ffffff;
+  cursor: zoom-out;
+}
+.sl img {
+  width: min(92%, 840px);
+  max-height: 65vh;
+  aspect-ratio: 4/3;
+  object-fit: cover;
+  border-radius: 1.25rem;
+  border: 2px solid #F7B500;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+  display: block;
+}
+.sl .ph-box {
+  width: min(92%, 840px);
+  max-height: 65vh;
+  aspect-ratio: 4/3;
+  border-radius: 1.25rem;
+  background: linear-gradient(135deg, #12306b, #1d4aa8);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  border: 2px solid #F7B500;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+}
+.sl p {
+  margin: 0;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #F7B500;
+  text-align: center;
+}
+#lb button {
+  position: absolute;
+  background: rgba(255, 255, 255, 0.2);
+  color: #ffffff;
+  border: 0;
+  border-radius: 50%;
+  width: 48px;
+  height: 48px;
+  font-size: 1.75rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+#lb button:hover {
+  background: #F7B500;
+  color: #001b4b;
+  transform: scale(1.1);
+}
+#lbx { top: 20px; right: 20px; z-index: 10; }
+#lbp { top: 50%; left: 20px; transform: translateY(-50%); }
+#lbn { top: 50%; right: 20px; transform: translateY(-50%); }
+</style>
+</head>
+<body id="top">
+
+<!-- HEADER -->
+<header class="site-header">
+<div class="site-container header-nav-wrap">
+<a class="brand-logo-link" href="index.html">
+<img alt="KCB Gurukulam Logo" class="brand-logo-img" src="PNG LOGO copy.jpg">
+<span class="brand-name">KCB Gurukulam</span>
+</a>
+<nav class="desktop-nav">
+<div class="nav-dropdown-item">
+<button class="nav-link-btn" type="button">
+<span>About Us</span>
+<span class="material-symbols-outlined" style="font-size: 16px;">expand_more</span>
+</button>
+<div class="nav-dropdown-menu">
+<a href="about.html">Vision &amp; Mission</a>
+<a href="management.html">Management &amp; Leadership</a>
+</div>
+</div>
+<div class="nav-dropdown-item">
+<button class="nav-link-btn" type="button">
+<span>Admissions</span>
+<span class="material-symbols-outlined" style="font-size: 16px;">expand_more</span>
+</button>
+<div class="nav-dropdown-menu">
+<a href="admissions.html">Admission Process &amp; Guidelines</a>
+<a href="admissions.html#admissions-enquiry">Enquiry &amp; Admission</a>
+<a href="index.html#salient-features">Fee Structure</a>
+<a href="contact.html">Contact Admissions</a>
+</div>
+</div>
+<div class="nav-dropdown-item">
+<button class="nav-link-btn" type="button">
+<span>Academics</span>
+<span class="material-symbols-outlined" style="font-size: 16px;">expand_more</span>
+</button>
+<div class="nav-dropdown-menu">
+<a href="preprimary.html">Pre Primary (Nursery - UKG)</a>
+<a href="primary.html">Primary (Classes I - V)</a>
+<a href="upperprimary.html">Upper Primary (Classes VI+)</a>
+<a href="index.html#academic-wings">Academic Wings Overview</a>
+</div>
+</div>
+<div class="nav-dropdown-item">
+<button class="nav-link-btn" type="button" style="color:#feb62f;">
+<span>Life @ School</span>
+<span class="material-symbols-outlined" style="font-size: 16px;">expand_more</span>
+</button>
+<div class="nav-dropdown-menu">
+<a href="arts.html">Arts &amp; Culture</a>
+<a href="sports.html">Sports &amp; Athletics</a>
+<a href="gallery.html" style="font-weight:700; color:#12306b;">Photo Gallery</a>
+</div>
+</div>
+<div class="nav-dropdown-item">
+<button class="nav-link-btn" type="button">
+<span>Others</span>
+<span class="material-symbols-outlined" style="font-size: 16px;">expand_more</span>
+</button>
+<div class="nav-dropdown-menu nav-menu-end">
+<a href="transport.html">Transport &amp; Bus Routes</a>
+<a href="contact.html">Contact Us</a>
+<a href="contact.html#careers">Careers</a>
+</div>
+</div>
+</nav>
+<div class="header-actions">
+<a class="btn-apply-header" href="admissions.html#admissions-enquiry">
+<span>Apply Now</span>
+<span class="material-symbols-outlined" style="font-size: 14px;">arrow_forward</span>
+</a>
+<button aria-label="Open navigation menu" class="mobile-menu-toggle" type="button" onclick="document.getElementById('mobileDrawer').classList.add('open')">
+<span class="material-symbols-outlined">menu</span>
+</button>
+</div>
+</div>
+</header>
+
+<main class="page-main">
+<!-- SUBPAGE HERO -->
+<section class="subpage-hero">
+<div class="site-container">
+<div class="subpage-hero-content">
+<div class="badge-pill badge-hero">
+<span class="material-symbols-outlined" style="font-size:15px; color:#feb62f;">collections</span>
+<span>Home &nbsp;/&nbsp; Life @ School &nbsp;/&nbsp; Gallery</span>
+</div>
+<h1 class="display-title subpage-hero-title">Photo Gallery</h1>
+<p class="subpage-hero-subtitle">A glimpse of everyday joy, discovery, athletics, art, and memorable celebrations at KCB Gurukulam. Tap any photo to enlarge.</p>
+</div>
+</div>
+</section>
+
+<!-- CATEGORY 1: CAMPUS & FACILITIES -->
+<section class="page-section">
+<div class="site-container">
+<div style="display:flex; align-items:center; gap:0.75rem; margin-bottom:1.5rem;">
+<div class="badge-pill badge-blue"><span class="material-symbols-outlined" style="font-size:16px;">domain</span><span>Infrastructure</span></div>
+<h2 class="display-title" style="font-size:2rem; margin:0;">Campus &amp; Facilities</h2>
+</div>
+<div class="gal-scroll">
+<figure><img src="school-building.jpg" alt="KCB Gurukulam Main School Building - Adilabad" loading="lazy"><figcaption>KCB Gurukulam Campus Building</figcaption></figure>
+<figure><img src="https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&amp;fit=crop&amp;w=600&amp;q=80" alt="Spacious, Colourful Classrooms" loading="lazy"><figcaption>Spacious, Colourful Classrooms</figcaption></figure>
+<figure><img src="computer-lab.jpg" alt="Modern Computer IT Lab" loading="lazy"><figcaption>Modern Computer Lab</figcaption></figure>
+<figure><img src="science-lab.jpg" alt="Composite Science &amp; Physics Laboratory" loading="lazy"><figcaption>Science &amp; Physics Lab</figcaption></figure>
+<figure><img src="https://images.unsplash.com/photo-1508098682722-e99c43a406b2?auto=format&amp;fit=crop&amp;w=600&amp;q=80" alt="Expansive Sports Playground" loading="lazy"><figcaption>Expansive Playground</figcaption></figure>
+<figure><img src="https://images.unsplash.com/photo-1521587760476-6c12a4b040da?auto=format&amp;fit=crop&amp;w=600&amp;q=80" alt="Knowledge Resource Library" loading="lazy"><figcaption>Knowledge Resource Library</figcaption></figure>
+<figure><img src="https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&amp;fit=crop&amp;w=600&amp;q=80" alt="Entrance Gardens &amp; Trees" loading="lazy"><figcaption>Entrance Gardens &amp; Trees</figcaption></figure>
+</div>
+</div>
+</section>
+
+<!-- CATEGORY 2: LEARNING & ACTIVITIES -->
+<section class="page-section bg-light-tint">
+<div class="site-container">
+<div style="display:flex; align-items:center; gap:0.75rem; margin-bottom:1.5rem;">
+<div class="badge-pill badge-amber"><span class="material-symbols-outlined" style="font-size:16px;">auto_stories</span><span>Experiential Class</span></div>
+<h2 class="display-title" style="font-size:2rem; margin:0;">Learning &amp; Activities</h2>
+</div>
+<div class="gal-scroll">
+<figure><img src="science-lab.jpg" alt="Practical Physics &amp; Science Experiments at KCB Gurukulam" loading="lazy"><figcaption>Practical Science Experiments</figcaption></figure>
+<figure><img src="https://images.unsplash.com/photo-1460518451282-474b156ed8c4?auto=format&amp;fit=crop&amp;w=600&amp;q=80" alt="Painting &amp; Craft Sessions" loading="lazy"><figcaption>Painting &amp; Craft Sessions</figcaption></figure>
+<figure><img src="https://images.unsplash.com/photo-1587654780291-39c9404d746b?auto=format&amp;fit=crop&amp;w=600&amp;q=80" alt="Creative Play with Teachers" loading="lazy"><figcaption>Creative Play with Teachers</figcaption></figure>
+<figure><img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&amp;fit=crop&amp;w=600&amp;q=80" alt="Our Little Pre-Primary Graduates" loading="lazy"><figcaption>Our Little Pre-Primary Graduates</figcaption></figure>
+<figure><img src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&amp;fit=crop&amp;w=600&amp;q=80" alt="Collaborative Group Activity" loading="lazy"><figcaption>Collaborative Group Activity</figcaption></figure>
+<figure><img src="https://images.unsplash.com/photo-1502086223501-7ea6ecd79368?auto=format&amp;fit=crop&amp;w=600&amp;q=80" alt="Interactive Story Time Circle" loading="lazy"><figcaption>Interactive Story Time Circle</figcaption></figure>
+</div>
+</div>
+</section>
+
+<!-- CATEGORY 3: SPORTS & OUTDOORS -->
+<section class="page-section">
+<div class="site-container">
+<div style="display:flex; align-items:center; gap:0.75rem; margin-bottom:1.5rem;">
+<div class="badge-pill badge-cyan"><span class="material-symbols-outlined" style="font-size:16px;">sports_kabaddi</span><span>Athletics</span></div>
+<h2 class="display-title" style="font-size:2rem; margin:0;">Sports &amp; Outdoors</h2>
+</div>
+<div class="gal-scroll">
+<figure><img src="https://images.unsplash.com/photo-1508098682722-e99c43a406b2?auto=format&amp;fit=crop&amp;w=600&amp;q=80" alt="Playing Football on Playground" loading="lazy"><figcaption>Playing Football on Playground</figcaption></figure>
+<figure><img src="https://images.unsplash.com/photo-1461896836934-ffe607ba8211?auto=format&amp;fit=crop&amp;w=600&amp;q=80" alt="Physical Education Circuit" loading="lazy"><figcaption>Physical Education Circuit</figcaption></figure>
+<figure><img src="https://images.unsplash.com/photo-1555597673-b21d5c935865?auto=format&amp;fit=crop&amp;w=600&amp;q=80" alt="Karate Discipline Training" loading="lazy"><figcaption>Karate Discipline Training</figcaption></figure>
+<figure><img src="https://images.unsplash.com/photo-1526676037777-05a232554f77?auto=format&amp;fit=crop&amp;w=600&amp;q=80" alt="Outdoor Recess &amp; Activities" loading="lazy"><figcaption>Outdoor Recess &amp; Activities</figcaption></figure>
+<figure><img src="https://images.unsplash.com/photo-1518611012118-696072aa579a?auto=format&amp;fit=crop&amp;w=600&amp;q=80" alt="Annual Sports Day Competitions" loading="lazy"><figcaption>Annual Sports Day Competitions</figcaption></figure>
+<figure><img src="https://images.unsplash.com/photo-1532375810709-75b1da00537c?auto=format&amp;fit=crop&amp;w=600&amp;q=80" alt="Disciplined Morning Assembly" loading="lazy"><figcaption>Disciplined Morning Assembly</figcaption></figure>
+</div>
+</div>
+</section>
+
+<!-- CATEGORY 4: ARTS & CULTURE -->
+<section class="page-section bg-light-tint">
+<div class="site-container">
+<div style="display:flex; align-items:center; gap:0.75rem; margin-bottom:1.5rem;">
+<div class="badge-pill badge-pink" style="background:#FFD9E4; color:#A23B97;"><span class="material-symbols-outlined" style="font-size:16px;">theater_comedy</span><span>Creative</span></div>
+<h2 class="display-title" style="font-size:2rem; margin:0;">Arts &amp; Culture</h2>
+</div>
+<div class="gal-scroll">
+<figure><img src="https://images.unsplash.com/photo-1513364776144-60967b0f800f?auto=format&amp;fit=crop&amp;w=600&amp;q=80" alt="Drawing &amp; Sketching Studio" loading="lazy"><figcaption>Drawing &amp; Sketching Studio</figcaption></figure>
+<figure><img src="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&amp;fit=crop&amp;w=600&amp;q=80" alt="Vocal Music &amp; Rhythm Class" loading="lazy"><figcaption>Vocal Music &amp; Rhythm Class</figcaption></figure>
+<figure><img src="https://images.unsplash.com/photo-1547153760-18fc86324498?auto=format&amp;fit=crop&amp;w=600&amp;q=80" alt="Classical &amp; Folk Dance" loading="lazy"><figcaption>Classical &amp; Folk Dance</figcaption></figure>
+<figure><img src="https://images.unsplash.com/photo-1576765608535-5f04d1e3f289?auto=format&amp;fit=crop&amp;w=600&amp;q=80" alt="Creative Craftwork Displays" loading="lazy"><figcaption>Creative Craftwork Displays</figcaption></figure>
+<figure><img src="https://images.unsplash.com/photo-1507676184212-d03ab07a01bf?auto=format&amp;fit=crop&amp;w=600&amp;q=80" alt="Theatrical Roleplay &amp; Drama" loading="lazy"><figcaption>Theatrical Roleplay &amp; Drama</figcaption></figure>
+<figure><img src="https://images.unsplash.com/photo-1460518451282-474b156ed8c4?auto=format&amp;fit=crop&amp;w=600&amp;q=80" alt="Annual Student Art Exhibition" loading="lazy"><figcaption>Annual Student Art Exhibition</figcaption></figure>
+</div>
+</div>
+</section>
+
+<!-- CATEGORY 5: EVENTS & FESTIVALS -->
+<section class="page-section">
+<div class="site-container">
+<div style="display:flex; align-items:center; gap:0.75rem; margin-bottom:1.5rem;">
+<div class="badge-pill badge-purple"><span class="material-symbols-outlined" style="font-size:16px;">celebration</span><span>Festivities</span></div>
+<h2 class="display-title" style="font-size:2rem; margin:0;">Celebrations &amp; Excursions</h2>
+</div>
+<div class="gal-scroll">
+<figure><img src="https://images.unsplash.com/photo-1514525253161-7a46d19cd819?auto=format&amp;fit=crop&amp;w=600&amp;q=80" alt="Grand Annual Day Festivities" loading="lazy"><figcaption>Grand Annual Day Festivities</figcaption></figure>
+<figure><img src="https://images.unsplash.com/photo-1532375810709-75b1da00537c?auto=format&amp;fit=crop&amp;w=600&amp;q=80" alt="Independence Day Celebrations" loading="lazy"><figcaption>Independence Day Celebrations</figcaption></figure>
+<figure><img src="https://images.unsplash.com/photo-1530103862676-de8c9debad1d?auto=format&amp;fit=crop&amp;w=600&amp;q=80" alt="Diwali, Sankranti &amp; Dasara" loading="lazy"><figcaption>Diwali, Sankranti &amp; Dasara</figcaption></figure>
+<figure><img src="https://images.unsplash.com/photo-1544717305-2782549b5136?auto=format&amp;fit=crop&amp;w=600&amp;q=80" alt="Educational Field Trips &amp; Excursions" loading="lazy"><figcaption>Educational Field Trips &amp; Excursions</figcaption></figure>
+<figure><img src="https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&amp;fit=crop&amp;w=600&amp;q=80" alt="Nature Walk &amp; Green Campus" loading="lazy"><figcaption>Nature Walk &amp; Green Campus</figcaption></figure>
+<figure><img src="https://images.unsplash.com/photo-1507413245164-6160d8298b31?auto=format&amp;fit=crop&amp;w=600&amp;q=80" alt="Regional Science Centre Visit" loading="lazy"><figcaption>Regional Science Centre Visit</figcaption></figure>
+</div>
+
+<!-- SUBNAV NAVIGATION -->
+<div style="margin-top:3.5rem; text-align:center;">
+<h3 class="display-title" style="font-size:1.75rem; color:#001b4b; margin-bottom:1.25rem;">Explore More of Life @ School</h3>
+<div style="display:flex; gap:1rem; justify-content:center; flex-wrap:wrap;">
+<a class="btn-secondary" href="life.html">Life @ School</a>
+<a class="btn-secondary" href="arts.html">Arts &amp; Culture</a>
+<a class="btn-secondary" href="sports.html">Sports &amp; Athletics</a>
+<a class="btn-primary" href="gallery.html">Photo Gallery</a>
+</div>
+</div>
+</div>
+</section>
+</main>
+
+<!-- LIGHTBOX MODAL -->
+<div id="lb" aria-modal="true" role="dialog">
+<button id="lbx" aria-label="Close">&times;</button>
+<button id="lbp" aria-label="Previous">&#8249;</button>
+<div id="lbt"></div>
+<button id="lbn" aria-label="Next">&#8250;</button>
+</div>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+<div class="site-container">
+<div class="footer-columns-wrap">
+<!-- Col 1: Brand & Identity -->
+<div class="footer-col" style="flex: 1 1 280px; max-width: 380px;">
+<div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.5rem;">
+<img alt="KCB Gurukulam Logo" class="brand-logo-img" src="PNG LOGO copy.jpg" style="background:#ffffff; border-radius:50%; padding:2px; width:44px; height:44px;">
+<span class="brand-name" style="font-size: 1.25rem; color: #ffffff;">KCB Gurukulam</span>
+</div>
+<p style="font-size: 0.85rem; line-height: 1.6; color: rgba(228, 232, 248, 0.85);">
+A premier English medium school in Adilabad offering comprehensive education from Pre-Primary to Upper Primary. Affiliated under holistic CBSE curriculum framework.
+</p>
+<div style="display: flex; align-items: center; gap: 0.5rem; margin-top: 0.5rem;">
+<span class="material-symbols-outlined" style="color: #feb62f; font-size: 18px;">verified</span>
+<span style="font-size: 0.8rem; color: #feb62f; font-weight: 600;">Admissions Open 2026-27</span>
+</div>
+</div>
+<!-- Col 2: Quick Links -->
+<div class="footer-col">
+<h4 class="footer-col-title">Quick Links</h4>
+<ul class="footer-links-list">
+<li><a href="index.html">Home</a></li>
+<li><a href="about.html">About School</a></li>
+<li><a href="management.html">Management &amp; Leadership</a></li>
+<li><a href="admissions.html">Admissions 2026-27</a></li>
+<li><a href="transport.html">Transport &amp; Routes</a></li>
+<li><a href="contact.html">Contact Us</a></li>
+</ul>
+</div>
+<!-- Col 3: Academic Wings -->
+<div class="footer-col">
+<h4 class="footer-col-title">Academics &amp; Wings</h4>
+<ul class="footer-links-list">
+<li><a href="preprimary.html">Pre Primary Wing (Nursery - UKG)</a></li>
+<li><a href="primary.html">Primary Wing (Classes I - V)</a></li>
+<li><a href="upperprimary.html">Upper Primary Wing (Classes VI - VII)</a></li>
+<li><a href="arts.html">Arts &amp; Culture</a></li>
+<li><a href="sports.html">Sports &amp; Karate</a></li>
+<li><a href="gallery.html">Photo Gallery</a></li>
+</ul>
+</div>
+<!-- Col 4: Campus Location -->
+<div class="footer-col" style="flex: 1 1 260px;" id="campus-location">
+<h4 class="footer-col-title">Campus Location</h4>
+<div class="footer-links-list">
+<div style="display: flex; align-items: flex-start; gap: 0.5rem;">
+<span class="material-symbols-outlined" style="font-size: 18px; color: #feb62f; flex-shrink: 0; margin-top: 2px;">location_on</span>
+<span><a href="https://www.google.com/maps/dir/?api=1&amp;destination=KCB+Gurukulam" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: underline; text-underline-offset: 3px;" title="Open Driving Directions in Google Maps">Beside KCB Gardens,<br>New Housing Board Road,<br>Adilabad - 504001, Telangana</a></span>
+</div>
+<div style="display: flex; align-items: center; gap: 0.5rem; padding-top: 0.25rem;">
+<span class="material-symbols-outlined" style="font-size: 18px; color: #feb62f; flex-shrink: 0;">call</span>
+<span><a href="tel:+918331949000">+91 8331949000</a> / <a href="https://wa.me/918332949000" target="_blank" rel="noopener noreferrer" title="Chat on WhatsApp">8332949000 (WhatsApp)</a></span>
+</div>
+<div style="display: flex; align-items: flex-start; gap: 0.5rem;">
+<span class="material-symbols-outlined" style="font-size: 18px; color: #feb62f; flex-shrink: 0; margin-top: 2px;">mail</span>
+<div style="display: flex; flex-direction: column; gap: 0.35rem; font-size: 0.85rem;">
+<div><span style="font-size: 0.7rem; color: #feb62f; font-weight: 600; text-transform: uppercase; letter-spacing: 0.4px; display: block;">Admissions:</span><a href="mailto:kcbgurukulam.admissions@gmail.com">kcbgurukulam.admissions@gmail.com</a></div>
+<div><span style="font-size: 0.7rem; color: #feb62f; font-weight: 600; text-transform: uppercase; letter-spacing: 0.4px; display: block;">General:</span><a href="mailto:kcbgurukulam@gmail.com">kcbgurukulam@gmail.com</a></div>
+</div>
+</div>
+</div>
+<div class="footer-social-row">
+<a aria-label="Facebook" class="social-icon-btn social-fb" href="https://www.facebook.com" rel="noopener noreferrer" target="_blank" title="Facebook"><svg fill="currentColor" height="18" viewBox="0 0 24 24" width="18"><path d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z"></path></svg></a>
+<a aria-label="Instagram" class="social-icon-btn social-ig" href="https://www.instagram.com" rel="noopener noreferrer" target="_blank" title="Instagram"><svg fill="currentColor" height="18" viewBox="0 0 24 24" width="18"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689-.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"></path></svg></a>
+<a aria-label="YouTube" class="social-icon-btn social-yt" href="https://www.youtube.com" rel="noopener noreferrer" target="_blank" title="YouTube"><svg fill="currentColor" height="18" viewBox="0 0 24 24" width="18"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"></path></svg></a>
+<a aria-label="WhatsApp" class="social-icon-btn social-wa" href="https://wa.me/918332949000" rel="noopener noreferrer" target="_blank" title="WhatsApp Chat"><svg fill="currentColor" height="18" viewBox="0 0 24 24" width="18"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"></path></svg></a>
+</div>
+</div>
+</div>
+</div>
+<!-- Footer Bottom Bar -->
+<div class="footer-bottom-bar">
+<p>© 2026 KCB Gurukulam English Medium School, Adilabad. All rights reserved.</p>
+<div style="display: flex; align-items: center; justify-content: center; gap: 1rem; flex-wrap: wrap;">
+<a href="privacy.html">Privacy Policy</a>
+<span style="opacity: 0.35;">•</span>
+<a href="terms.html">Terms &amp; Conditions</a>
+<span style="opacity: 0.35;">•</span>
+<a href="admissions.html">Admissions 2026-27</a>
+</div>
+<p style="margin: 0; font-size: 0.72rem; color: rgba(228, 232, 248, 0.65); letter-spacing: 0.3px;">Managed by <span style="color: #feb62f; font-weight: 600;">KCB Solutions</span></p>
+</div>
+</div>
+</footer>
+
+<a aria-label="Scroll to top" class="back-to-top-fab" href="#top">
+<span class="material-symbols-outlined" style="font-size: 24px;">arrow_upward</span>
+</a>
+
+<!-- Mobile Navigation Drawer -->
+<div class="mobile-drawer" id="mobileDrawer">
+<div class="mobile-drawer-inner">
+<div class="mobile-drawer-header">
+<span class="brand-name" style="color:#feb62f;">KCB Gurukulam</span>
+<button class="mobile-close-btn" id="mobileCloseBtn" type="button" onclick="document.getElementById('mobileDrawer').classList.remove('open')">&times;</button>
+</div>
+<ul class="mobile-nav-list">
+<li><a href="index.html">Home</a></li>
+<li><a href="about.html">About Us</a></li>
+<li><a href="management.html">Management</a></li>
+<li><a href="admissions.html">Admissions 2026-27</a></li>
+<li><a href="preprimary.html">Pre Primary</a></li>
+<li><a href="primary.html">Primary</a></li>
+<li><a href="upperprimary.html">Upper Primary</a></li>
+<li><a href="life.html">Life @ School</a></li>
+<li><a href="arts.html">Arts</a></li>
+<li><a href="sports.html">Sports</a></li>
+<li><a href="gallery.html" style="color:#feb62f;">Gallery</a></li>
+<li><a href="transport.html">Transport</a></li>
+<li><a href="contact.html">Contact Us</a></li>
+<li style="margin-top:0.75rem;"><a href="admissions.html#admissions-enquiry" class="btn-primary" style="justify-content:center; color:#001b4b;">Apply Now</a></li>
+</ul>
+</div>
+</div>
+
+<script>
+document.getElementById('mobileDrawer').addEventListener('click', function(e) {
+if (e.target === this) this.classList.remove('open');
+});
+
+(function(){
+var lb=document.getElementById("lb"), tr=document.getElementById("lbt");
+function open(fig){
+ var figs=[].slice.call(fig.parentNode.children), idx=figs.indexOf(fig);
+ tr.innerHTML="";
+ figs.forEach(function(f){
+  var sl=document.createElement("div"); sl.className="sl";
+  sl.appendChild(f.firstElementChild.cloneNode(true));
+  var c=f.querySelector("figcaption"), p=document.createElement("p");
+  p.textContent=c?c.textContent:""; sl.appendChild(p); tr.appendChild(sl);
+ });
+ lb.classList.add("on"); document.body.style.overflow="hidden";
+ tr.scrollLeft=idx*tr.clientWidth;
+}
+function close(){ lb.classList.remove("on"); document.body.style.overflow=""; tr.innerHTML=""; }
+function go(d){ tr.scrollBy({left:d*tr.clientWidth, behavior:"smooth"}); }
+document.querySelectorAll(".gal-scroll figure").forEach(function(f){
+ f.addEventListener("click", function(){ open(f); });
+});
+document.getElementById("lbx").onclick=close;
+document.getElementById("lbp").onclick=function(){ go(-1); };
+document.getElementById("lbn").onclick=function(){ go(1); };
+tr.addEventListener("click", function(e){ if(e.target===tr || e.target.classList.contains("sl")) close(); });
+document.addEventListener("keydown", function(e){
+ if(!lb.classList.contains("on")) return;
+ if(e.key==="Escape") close();
+ if(e.key==="ArrowLeft") go(-1);
+ if(e.key==="ArrowRight") go(1);
+});
+})();
+</script>
+
+<script src="motion.js"></script>
+</body>
+</html>
