@@ -121,11 +121,14 @@
     });
   });
 
-  // 6. Web3Forms Smart Client-Side Submission (All Forms)
+  // 6. Web3Forms Smart Client-Side Submission (With 1-Minute Anti-Spam Cooldown)
   document.querySelectorAll('form[action="https://api.web3forms.com/submit"]').forEach(function(form) {
     var submitBtn = form.querySelector('button[type="submit"]');
     var originalBtnHtml = submitBtn ? submitBtn.innerHTML : '';
-    
+    var formId = form.id || ('form_' + Math.random().toString(36).substr(2, 6));
+    var cooldownStorageKey = 'kcb_form_cooldown_' + formId;
+    var COOLDOWN_MS = 60 * 1000; // 1-minute anti-spam cooldown
+
     var resultBox = document.createElement('div');
     resultBox.className = 'form-result-box';
     resultBox.style.display = 'none';
@@ -139,8 +142,68 @@
     form.appendChild(resultBox);
 
     var isSubmitting = false;
+    var cooldownInterval = null;
+
+    function startCooldownTimer(secondsLeft) {
+      if (cooldownInterval) clearInterval(cooldownInterval);
+      if (submitBtn) {
+        submitBtn.disabled = true;
+        submitBtn.style.opacity = '0.75';
+        submitBtn.style.cursor = 'not-allowed';
+      }
+
+      function tick() {
+        if (secondsLeft <= 0) {
+          clearInterval(cooldownInterval);
+          cooldownInterval = null;
+          if (submitBtn) {
+            submitBtn.disabled = false;
+            submitBtn.style.opacity = '1';
+            submitBtn.style.cursor = 'pointer';
+            submitBtn.innerHTML = originalBtnHtml;
+          }
+          if (resultBox && resultBox.textContent.indexOf('Please wait') !== -1) {
+            resultBox.style.display = 'none';
+          }
+        } else {
+          if (submitBtn) {
+            submitBtn.innerHTML = '<span>Please wait (' + secondsLeft + 's)...</span><span class="material-symbols-outlined" style="font-size:18px;">hourglass_bottom</span>';
+          }
+          secondsLeft--;
+        }
+      }
+
+      tick();
+      cooldownInterval = setInterval(tick, 1000);
+    }
+
+    // Check if in active cooldown from previous submission
+    try {
+      var lastSubmit = parseInt(localStorage.getItem(cooldownStorageKey) || '0', 10);
+      var elapsed = Date.now() - lastSubmit;
+      if (elapsed < COOLDOWN_MS) {
+        startCooldownTimer(Math.ceil((COOLDOWN_MS - elapsed) / 1000));
+      }
+    } catch (e) {}
 
     form.addEventListener('submit', function(e) {
+      // 1-minute anti-spam verification
+      try {
+        var last = parseInt(localStorage.getItem(cooldownStorageKey) || '0', 10);
+        var diff = Date.now() - last;
+        if (diff < COOLDOWN_MS) {
+          e.preventDefault();
+          var remaining = Math.ceil((COOLDOWN_MS - diff) / 1000);
+          resultBox.style.display = 'block';
+          resultBox.style.background = '#fff8e6';
+          resultBox.style.color = '#7f5700';
+          resultBox.style.border = '1px solid #feb62f';
+          resultBox.textContent = '⏱ Please wait ' + remaining + ' seconds before submitting another enquiry.';
+          startCooldownTimer(remaining);
+          return;
+        }
+      } catch (err) {}
+
       if (isSubmitting) return;
       e.preventDefault();
       isSubmitting = true;
@@ -180,11 +243,17 @@
       })
       .then(function(data) {
         if (data.success) {
+          try {
+            localStorage.setItem(cooldownStorageKey, Date.now().toString());
+          } catch (e) {}
+
           resultBox.style.background = '#e6f8ed';
           resultBox.style.color = '#0e7039';
           resultBox.style.border = '1px solid #34c759';
           resultBox.textContent = '✓ Thank you! Your enquiry has been received. Our team will contact you shortly.';
           form.reset();
+          startCooldownTimer(60);
+
           var redirectUrl = form.querySelector('input[name="redirect"]');
           if (redirectUrl && redirectUrl.value) {
             setTimeout(function() {
@@ -196,6 +265,11 @@
           resultBox.style.color = '#c5221f';
           resultBox.style.border = '1px solid #ea4335';
           resultBox.textContent = data.message || 'Something went wrong. Please call us directly.';
+          if (submitBtn) {
+            submitBtn.disabled = false;
+            submitBtn.style.opacity = '1';
+            submitBtn.innerHTML = originalBtnHtml;
+          }
         }
       })
       .catch(function(error) {
@@ -203,14 +277,14 @@
         resultBox.style.color = '#c5221f';
         resultBox.style.border = '1px solid #ea4335';
         resultBox.textContent = 'Unable to send online. Please call +91 8331949000 or use WhatsApp.';
-      })
-      .finally(function() {
-        isSubmitting = false;
         if (submitBtn) {
           submitBtn.disabled = false;
           submitBtn.style.opacity = '1';
           submitBtn.innerHTML = originalBtnHtml;
         }
+      })
+      .finally(function() {
+        isSubmitting = false;
       });
     });
   });
