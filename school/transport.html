@@ -321,8 +321,8 @@ Seats are strictly limited to maintain child safety and personal care without ov
 <textarea class="form-textarea" name="special_instructions" rows="3" placeholder="Any specific stop preference or details" maxlength="1500"></textarea>
 </div>
 
-<!-- Free Web3Forms Captcha Widget (Automatically satisfies token requirement if enabled) -->
-<div class="h-captcha" data-captcha="true" style="margin-bottom: 0.75rem; display: flex; justify-content: center;"></div>
+<!-- Google reCAPTCHA Widget -->
+<div class="g-recaptcha" data-sitekey="6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI" style="margin-bottom: 0.75rem; display: flex; justify-content: center;"></div>
 
 <button class="btn-submit-form" type="submit">
 <span>Send Transport Request</span>
@@ -463,7 +463,7 @@ if (e.target === this) this.classList.remove('open');
 });
 </script>
 
-<script src="https://web3forms.com/client/script.js" async defer></script>
-<script src="motion.js?v=4"></script>
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+<script src="motion.js?v=5"></script>
 </body>
 </html>

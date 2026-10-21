@@ -318,7 +318,7 @@
           resultBox.style.border = '1px solid #ea4335';
           
           var msg = data.message || 'Something went wrong. Please call us directly.';
-          if (msg.toLowerCase().indexOf('hcaptcha') !== -1) {
+          if (msg.toLowerCase().indexOf('captcha') !== -1) {
             resultBox.innerHTML = '⚠️ <strong>Verification required:</strong> Please tick the "I am not a robot" box above and click submit, or <a href="https://wa.me/918332949000?text=' + encodeURIComponent('Hello KCB Gurukulam, I would like to submit my enquiry directly.') + '" target="_blank" rel="noopener noreferrer" style="color:#001b4b; text-decoration:underline; font-weight:700;">Submit via WhatsApp &rarr;</a>';
           } else {
             resultBox.innerHTML = msg + ' &mdash; <a href="https://wa.me/918332949000?text=' + encodeURIComponent('Hello KCB Gurukulam, I would like to submit my enquiry directly.') + '" target="_blank" rel="noopener noreferrer" style="color:#001b4b; text-decoration:underline; font-weight:700;">Chat on WhatsApp &rarr;</a>';

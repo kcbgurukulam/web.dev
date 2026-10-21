@@ -264,8 +264,8 @@ We welcome qualified, enthusiastic teachers for pre-primary, primary, music, art
 <textarea class="form-textarea" id="career_message" name="message" rows="4" placeholder="Please share your qualifications, subject expertise, and experience..." required maxlength="1500"></textarea>
 </div>
 
-<!-- Free Web3Forms Captcha Widget (Automatically satisfies token requirement if enabled) -->
-<div class="h-captcha" data-captcha="true" style="margin-bottom: 0.75rem; display: flex; justify-content: center;"></div>
+<!-- Google reCAPTCHA Widget -->
+<div class="g-recaptcha" data-sitekey="6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI" style="margin-bottom: 0.75rem; display: flex; justify-content: center;"></div>
 
 <!-- Primary Action Button: Send Application / Message -->
 <button class="btn-submit-form" id="btnCareerSubmit" type="submit" style="cursor: pointer; width: 100%; justify-content: center;">
@@ -489,7 +489,7 @@ if (e.target === this) this.classList.remove('open');
 });
 </script>
 
-<script src="https://web3forms.com/client/script.js" async defer></script>
-<script src="motion.js?v=4"></script>
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+<script src="motion.js?v=5"></script>
 </body>
 </html>
