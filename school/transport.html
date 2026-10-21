@@ -17,7 +17,7 @@
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
 <link href="https://fonts.googleapis.com/css2?family=Anton:wght@400;500;700&amp;family=Poppins:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
-<link rel="stylesheet" href="theme.css">
+<link rel="stylesheet" href="theme.css?v=2">
 </head>
 <body id="top">
 
@@ -320,6 +320,9 @@ Seats are strictly limited to maintain child safety and personal care without ov
 <textarea class="form-textarea" name="special_instructions" rows="3" placeholder="Any specific stop preference or details" maxlength="1500"></textarea>
 </div>
 
+<!-- Free Web3Forms Captcha Widget (Automatically satisfies token requirement if enabled) -->
+<div class="h-captcha" data-captcha="true" style="margin-bottom: 0.75rem; display: flex; justify-content: center;"></div>
+
 <button class="btn-submit-form" type="submit">
 <span>Send Transport Request</span>
 <span class="material-symbols-outlined">send</span>
@@ -459,6 +462,7 @@ if (e.target === this) this.classList.remove('open');
 });
 </script>
 
-<script src="motion.js?v=2"></script>
+<script src="https://web3forms.com/client/script.js" async defer></script>
+<script src="motion.js?v=3"></script>
 </body>
 </html>

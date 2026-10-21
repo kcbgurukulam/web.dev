@@ -17,7 +17,7 @@
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
 <link href="https://fonts.googleapis.com/css2?family=Anton:wght@400;500;700&amp;family=Poppins:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
-<link rel="stylesheet" href="theme.css">
+<link rel="stylesheet" href="theme.css?v=2">
 </head>
 <body id="top">
 
@@ -250,7 +250,7 @@ Admissions open for Academic Year 2026-27. Give your child a nurturing blend of 
 <h3 class="display-title" style="font-size: 1.5rem;">Admissions Enquiry Form</h3>
 <p style="font-size: 0.825rem; color: rgb(68, 70, 80);">Fill in the details below and our team will get in touch promptly.</p>
 </div>
-<form action="https://api.web3forms.com/submit" method="POST" id="admissions-enquiry">
+<form action="https://api.web3forms.com/submit" method="POST" id="admissionsEnquiryForm">
 <input type="hidden" name="access_key" value="1b56173b-c1cb-4cea-b8b0-96e887abb99b">
 <input type="hidden" name="subject" value="New Admissions Enquiry - KCB Gurukulam">
 <input type="hidden" name="from_name" value="KCB Gurukulam (kcbgurukulam.in)">
@@ -303,9 +303,12 @@ Admissions open for Academic Year 2026-27. Give your child a nurturing blend of 
 <textarea class="form-textarea" id="message" name="message" placeholder="Ask about bus routes, timing, fee schedule, or sibling admissions..."></textarea>
 </div>
 
-<!-- Primary Action Button: Send Enquiry -->
+<!-- Free Web3Forms Captcha Widget (Automatically satisfies token requirement if enabled) -->
+<div class="h-captcha" data-captcha="true" style="margin-bottom: 0.75rem; display: flex; justify-content: center;"></div>
+
+<!-- Primary Action Button: Send Enquiry & Apply -->
 <button class="btn-submit-form" id="btnEnquirySubmit" type="submit" style="cursor: pointer; width: 100%; justify-content: center;">
-<span id="btnSubmitText">Send Enquiry</span>
+<span id="btnSubmitText">Apply Now &bull; Send Enquiry</span>
 <span class="material-symbols-outlined" id="btnSubmitIcon" style="font-size: 20px;">send</span>
 </button>
 
@@ -435,7 +438,7 @@ A premier English medium school in Adilabad offering comprehensive education fro
 <li><a href="gallery.html">Gallery</a></li>
 <li><a href="transport.html">Transport</a></li>
 <li><a href="contact.html">Contact Us</a></li>
-<li style="margin-top:0.75rem;"><a href="admissions.html#admissions-enquiry" class="btn-primary" style="justify-content:center; color:#001b4b;" onclick="document.getElementById('mobileDrawer').classList.remove('open')">Apply Now</a></li>
+<li style="margin-top:0.75rem;"><a href="#admissions-enquiry" class="btn-primary" style="justify-content:center; color:#001b4b;" onclick="document.getElementById('mobileDrawer').classList.remove('open')">Apply Now</a></li>
 </ul>
 </div>
 </div>
@@ -445,6 +448,7 @@ if (e.target === this) this.classList.remove('open');
 });
 </script>
 
-<script src="motion.js?v=2"></script>
+<script src="https://web3forms.com/client/script.js" async defer></script>
+<script src="motion.js?v=3"></script>
 </body>
 </html>

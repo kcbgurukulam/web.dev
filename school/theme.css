@@ -8,8 +8,11 @@
     }
     html {
       scroll-behavior: smooth;
-      scroll-padding-top: 80px;
+      scroll-padding-top: 85px;
       font-size: 16px;
+    }
+    section[id], [id="admissions-enquiry"], [id="campus-location"], [id="academic-wings"] {
+      scroll-margin-top: 90px;
     }
     body {
       background-color: #faf9ff;

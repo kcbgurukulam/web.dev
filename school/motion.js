@@ -89,24 +89,76 @@
     });
   }
 
-  // 4. Smooth Anchor Scrolling with Easing
-  document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
+  // 4. Smooth Anchor Scrolling & Navigation Engine
+  function smoothScrollToTarget(targetEl) {
+    if (!targetEl) return;
+    var headerEl = document.querySelector('.site-header');
+    var offset = headerEl ? (headerEl.offsetHeight + 15) : 85;
+    var topPos = targetEl.getBoundingClientRect().top + window.pageYOffset - offset;
+    window.scrollTo({
+      top: Math.max(0, topPos),
+      behavior: 'smooth'
+    });
+  }
+
+  document.querySelectorAll('a[href*="#"]').forEach(function(anchor) {
     anchor.addEventListener('click', function(e) {
       var href = this.getAttribute('href');
-      if (href === '#' || href === '#top') {
-        if (href === '#top') {
+      if (!href) return;
+      var hashIdx = href.indexOf('#');
+      if (hashIdx === -1) return;
+
+      var hash = href.slice(hashIdx);
+      var path = href.slice(0, hashIdx);
+
+      if (hash === '#' || hash === '#top') {
+        if (hash === '#top') {
           e.preventDefault();
           window.scrollTo({ top: 0, behavior: 'smooth' });
         }
         return;
       }
-      var target = document.querySelector(href);
-      if (target) {
-        e.preventDefault();
-        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+      var currentPath = window.location.pathname.split('/').pop() || 'index.html';
+      var cleanPath = path.replace(/^\//, '');
+      var isSamePage = !cleanPath || cleanPath === currentPath || (currentPath === '' && cleanPath === 'index.html');
+
+      if (isSamePage) {
+        var target = document.querySelector(hash);
+        if (target) {
+          e.preventDefault();
+          smoothScrollToTarget(target);
+
+          // Close mobile drawer if open
+          var drawer = document.getElementById('mobileDrawer');
+          if (drawer && drawer.classList.contains('open')) {
+            drawer.classList.remove('open');
+          }
+
+          if (hash === '#admissions-enquiry') {
+            setTimeout(function() {
+              var input = document.getElementById('student_name') || target.querySelector('input');
+              if (input) input.focus();
+            }, 450);
+          }
+        }
       }
     });
   });
+
+  // Handle direct hash navigation on page load
+  if (window.location.hash) {
+    setTimeout(function() {
+      var target = document.querySelector(window.location.hash);
+      if (target) {
+        smoothScrollToTarget(target);
+        if (window.location.hash === '#admissions-enquiry') {
+          var input = document.getElementById('student_name') || target.querySelector('input');
+          if (input) input.focus();
+        }
+      }
+    }, 300);
+  }
 
   // 5. Button Ripple / Click Micro-Feedback
   document.querySelectorAll('.btn-primary, .btn-secondary, .btn-submit-form, .btn-apply-header').forEach(function(btn) {
@@ -264,7 +316,14 @@
           resultBox.style.background = '#fdebee';
           resultBox.style.color = '#c5221f';
           resultBox.style.border = '1px solid #ea4335';
-          resultBox.textContent = data.message || 'Something went wrong. Please call us directly.';
+          
+          var msg = data.message || 'Something went wrong. Please call us directly.';
+          if (msg.toLowerCase().indexOf('hcaptcha') !== -1) {
+            resultBox.innerHTML = '⚠️ <strong>Verification required:</strong> Please tick the "I am not a robot" box above and click submit, or <a href="https://wa.me/918332949000?text=' + encodeURIComponent('Hello KCB Gurukulam, I would like to submit my enquiry directly.') + '" target="_blank" rel="noopener noreferrer" style="color:#001b4b; text-decoration:underline; font-weight:700;">Submit via WhatsApp &rarr;</a>';
+          } else {
+            resultBox.innerHTML = msg + ' &mdash; <a href="https://wa.me/918332949000?text=' + encodeURIComponent('Hello KCB Gurukulam, I would like to submit my enquiry directly.') + '" target="_blank" rel="noopener noreferrer" style="color:#001b4b; text-decoration:underline; font-weight:700;">Chat on WhatsApp &rarr;</a>';
+          }
+
           if (submitBtn) {
             submitBtn.disabled = false;
             submitBtn.style.opacity = '1';
@@ -276,7 +335,7 @@
         resultBox.style.background = '#fdebee';
         resultBox.style.color = '#c5221f';
         resultBox.style.border = '1px solid #ea4335';
-        resultBox.textContent = 'Unable to send online. Please call +91 8331949000 or use WhatsApp.';
+        resultBox.innerHTML = 'Unable to send online right now. <a href="https://wa.me/918332949000?text=' + encodeURIComponent('Hello KCB Gurukulam, I would like to submit my enquiry.') + '" target="_blank" rel="noopener noreferrer" style="color:#001b4b; text-decoration:underline; font-weight:700;">Click to Send via WhatsApp &rarr;</a> or Call +91 8331949000.';
         if (submitBtn) {
           submitBtn.disabled = false;
           submitBtn.style.opacity = '1';
@@ -291,7 +350,7 @@
 
   // 7. Dynamic WhatsApp Prefill Sync
   (function initWhatsAppSync() {
-    var form = document.getElementById('admissions-enquiry');
+    var form = document.getElementById('admissionsEnquiryForm') || document.getElementById('admissions-enquiry');
     var waBtn = document.getElementById('btnWhatsAppDirect');
     if (!form || !waBtn) return;
     function sync() {
