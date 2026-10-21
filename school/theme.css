@@ -1283,7 +1283,7 @@
         font-size: 3.75rem;
       }
       .founder-grid {
-        grid-template-columns: 8fr 4fr;
+        grid-template-columns: 4fr 8fr;
       }
       .features-grid {
         grid-template-columns: repeat(3, 1fr);
@@ -1444,7 +1444,7 @@
 }
 @media (min-width: 800px) {
   .profile-card {
-    grid-template-columns: 1fr 280px;
+    grid-template-columns: 280px 1fr;
   }
 }
 .profile-card-photo {
@@ -1455,7 +1455,7 @@
   align-items: center;
   text-align: center;
   gap: 1rem;
-  justify-self: end;
+  justify-self: start;
 }
 .founder-photo-col {
   width: 240px;
@@ -1464,7 +1464,7 @@
   flex-direction: column;
   align-items: center;
   text-align: center;
-  justify-self: end;
+  justify-self: start;
 }
 @media (max-width: 799px) {
   .profile-card-photo {
