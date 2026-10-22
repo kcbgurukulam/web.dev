@@ -1,5 +1,8 @@
+# Universal LLM Ingest File for AI Search Engines & Crawlers
+# Standard: https://llmstxt.org/
 User-agent: *
 Allow: /
+Allow: /llms.txt
 
 # Generative Engine Optimization (GEO) & AI Search Crawlers
 User-agent: GPTBot
