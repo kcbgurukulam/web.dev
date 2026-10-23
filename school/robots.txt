@@ -1,8 +1,22 @@
-# Universal LLM Ingest File for AI Search Engines & Crawlers
-# Standard: https://llmstxt.org/
+# Google Search and Image Crawlers (Favicon & Content Indexing)
+User-agent: Googlebot
+Allow: /
+
+User-agent: Googlebot-Image
+Allow: /
+Allow: /favicon.ico
+Allow: /favicon*.png
+Allow: /apple-touch-icon.png
+Allow: /logo.png
+Allow: /PNG LOGO copy.jpg
+
+# Universal Crawlers
 User-agent: *
 Allow: /
 Allow: /llms.txt
+Allow: /favicon.ico
+Allow: /favicon*.png
+Allow: /site.webmanifest
 
 # Generative Engine Optimization (GEO) & AI Search Crawlers
 User-agent: GPTBot
