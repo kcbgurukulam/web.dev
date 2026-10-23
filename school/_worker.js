@@ -40,6 +40,21 @@ export default {
   async fetch(request, env) {
     const url = new URL(request.url);
 
+    // --------------------------------------------------------------------------
+    // 0. ENFORCE HTTPS (Permanent 301 Redirect for any HTTP request)
+    // --------------------------------------------------------------------------
+    const proto = request.headers.get("x-forwarded-proto") || url.protocol.replace(":", "");
+    const cfVisitor = request.headers.get("cf-visitor");
+    const isHttp = proto === "http" ||
+                   url.protocol === "http:" ||
+                   (cfVisitor && cfVisitor.includes('"scheme":"http"'));
+
+    if (isHttp && url.hostname !== "localhost" && url.hostname !== "127.0.0.1") {
+      const httpsUrl = new URL(request.url);
+      httpsUrl.protocol = "https:";
+      return Response.redirect(httpsUrl.toString(), 301);
+    }
+
     // Handle CORS preflight
     if (request.method === "OPTIONS") {
       return jsonResponse({ ok: true });
@@ -204,12 +219,26 @@ export default {
     }
 
     // --------------------------------------------------------------------------
-    // 3. DEFAULT: Serve static assets (HTML, CSS, JS, Images)
+    // 3. DEFAULT: Serve static assets (HTML, CSS, JS, Images) with HSTS
     // --------------------------------------------------------------------------
     if (env && env.ASSETS) {
-      return env.ASSETS.fetch(request);
+      const res = await env.ASSETS.fetch(request);
+      const newHeaders = new Headers(res.headers);
+      newHeaders.set("Strict-Transport-Security", "max-age=31536000; includeSubDomains; preload");
+      return new Response(res.body, {
+        status: res.status,
+        statusText: res.statusText,
+        headers: newHeaders,
+      });
     }
 
-    return fetch(request);
+    const fallbackRes = await fetch(request);
+    const fallbackHeaders = new Headers(fallbackRes.headers);
+    fallbackHeaders.set("Strict-Transport-Security", "max-age=31536000; includeSubDomains; preload");
+    return new Response(fallbackRes.body, {
+      status: fallbackRes.status,
+      statusText: fallbackRes.statusText,
+      headers: fallbackHeaders,
+    });
   },
 };

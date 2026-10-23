@@ -2,6 +2,11 @@
 // KCB GURUKULAM - FLUID MOTION & ANIMATION ENGINE
 // ==========================================================================
 
+// Enforce HTTPS
+if (location.protocol === 'http:' && location.hostname !== 'localhost' && location.hostname !== '127.0.0.1') {
+  location.replace('https:' + window.location.href.substring(window.location.protocol.length));
+}
+
 (function() {
   'use strict';
 
