@@ -339,53 +339,48 @@
       display: none;
       align-items: center;
       gap: 0.375rem;
-      padding: 0.5rem 1.25rem;
-      border-radius: 9999px;
+      padding: 0.55rem 1.15rem;
+      border-radius: 6px;
       background: #F7B500;
       color: #001b4b;
-      font-weight: 600;
+      font-weight: 700;
       font-size: 0.75rem;
-      letter-spacing: 0.05em;
+      letter-spacing: 0.03em;
       text-transform: uppercase;
-      box-shadow: 0 2px 8px rgba(247, 181, 0, 0.3);
-      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+      border: 1px solid #d49a00;
+      box-shadow: none;
+      transition: background-color 0.2s ease, border-color 0.2s ease;
     }
     .btn-apply-header:hover {
-      background: #feb62f;
-      transform: translateY(-2px);
-      box-shadow: 0 8px 18px -4px rgba(247, 181, 0, 0.5);
-      filter: brightness(1.05);
+      background: #e6a700;
+      border-color: #be8a00;
+      color: #001b4b;
+      transform: none;
+      box-shadow: none;
+      filter: none;
     }
     .btn-apply-header:active {
-      transform: translateY(0);
-      box-shadow: 0 2px 6px rgba(247, 181, 0, 0.3);
+      background: #d49a00;
+      transform: none;
+      box-shadow: none;
     }
     .mobile-menu-toggle {
       display: inline-flex;
       align-items: center;
       gap: 0.45rem;
-      padding: 0.48rem 1rem;
-      border-radius: 9999px;
-      background: linear-gradient(135deg, #feb62f 0%, #F7B500 100%);
-      border: 1.5px solid #F7B500;
+      padding: 0.45rem 0.9rem;
+      border-radius: 6px;
+      background: #F7B500;
+      border: 1px solid #d49a00;
       color: #001b4b;
       font-family: 'Poppins', sans-serif;
       font-size: 0.85rem;
       font-weight: 700;
-      letter-spacing: 0.05em;
+      letter-spacing: 0.03em;
       text-transform: uppercase;
       cursor: pointer;
-      box-shadow: 0 4px 14px rgba(247, 181, 0, 0.42), inset 0 1px 0 rgba(255, 255, 255, 0.45);
-      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
-      animation: menuPulse 3.5s infinite ease-in-out;
-    }
-    @keyframes menuPulse {
-      0%, 100% {
-        box-shadow: 0 4px 14px rgba(247, 181, 0, 0.35), 0 0 0 0 rgba(254, 182, 47, 0.4);
-      }
-      50% {
-        box-shadow: 0 6px 18px rgba(247, 181, 0, 0.55), 0 0 0 5px rgba(254, 182, 47, 0);
-      }
+      box-shadow: none;
+      transition: background-color 0.2s ease, border-color 0.2s ease;
     }
     .mobile-menu-toggle .menu-toggle-icon {
       font-size: 1.35rem;
@@ -403,21 +398,19 @@
       transition: color 0.2s ease;
     }
     .mobile-menu-toggle:hover {
-      background: #ffffff;
-      border-color: #ffffff;
+      background: #e6a700;
+      border-color: #be8a00;
       color: #001b4b;
-      transform: translateY(-2px);
-      box-shadow: 0 6px 20px rgba(254, 182, 47, 0.65);
+      transform: none;
+      box-shadow: none;
     }
     .mobile-menu-toggle:hover .menu-toggle-icon,
     .mobile-menu-toggle:hover .menu-toggle-text {
       color: #001b4b;
     }
-    .mobile-menu-toggle:hover .menu-toggle-icon {
-      transform: rotate(90deg);
-    }
     .mobile-menu-toggle:active {
-      transform: translateY(0) scale(0.96);
+      background: #d49a00;
+      transform: none;
     }
     .mobile-drawer {
       display: none;
@@ -528,56 +521,61 @@
       padding-top: 0.5rem;
     }
 
-    /* Primary and Secondary CTA Button hover and active physics */
+    /* Primary and Secondary CTA Button (Clean, Flat, Non-Shiny) */
     .btn-primary {
       display: inline-flex;
       align-items: center;
       gap: 0.5rem;
-      padding: 0.85rem 1.85rem;
-      border-radius: 9999px;
+      padding: 0.75rem 1.6rem;
+      border-radius: 6px;
       background: #F7B500;
       color: #001b4b;
-      font-weight: 600;
-      font-size: 1rem;
-      box-shadow: 0 4px 14px rgba(247, 181, 0, 0.35);
-      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+      font-weight: 700;
+      font-size: 0.95rem;
+      border: 1px solid #d49a00;
+      box-shadow: none;
+      transition: background-color 0.2s ease, border-color 0.2s ease;
       cursor: pointer;
     }
     .btn-primary:hover {
-      background: #feb62f;
-      transform: translateY(-3px);
-      box-shadow: 0 10px 20px -5px rgba(232, 163, 23, 0.45);
-      filter: brightness(1.03);
+      background: #e6a700;
+      border-color: #be8a00;
+      color: #001b4b;
+      transform: none;
+      box-shadow: none;
+      filter: none;
     }
     .btn-primary:active {
-      transform: translateY(0);
-      box-shadow: 0 3px 8px rgba(247, 181, 0, 0.3);
+      background: #d49a00;
+      transform: none;
+      box-shadow: none;
     }
     .btn-secondary {
       display: inline-flex;
       align-items: center;
       gap: 0.5rem;
-      padding: 0.85rem 1.85rem;
-      border-radius: 9999px;
+      padding: 0.75rem 1.6rem;
+      border-radius: 6px;
       background: #ffffff;
-      border: 2px solid #12306b;
+      border: 1.5px solid #12306b;
       color: #12306b;
       font-weight: 600;
-      font-size: 1rem;
-      box-shadow: 0 2px 8px rgba(18, 48, 107, 0.08);
-      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+      font-size: 0.95rem;
+      box-shadow: none;
+      transition: background-color 0.2s ease, color 0.2s ease;
       cursor: pointer;
     }
     .btn-secondary:hover {
       background: #12306b;
       color: #ffffff;
-      transform: translateY(-3px);
-      box-shadow: 0 10px 20px -5px rgba(18, 48, 107, 0.35);
+      transform: none;
+      box-shadow: none;
       border-color: #12306b;
     }
     .btn-secondary:active {
-      transform: translateY(0);
-      box-shadow: 0 2px 6px rgba(18, 48, 107, 0.15);
+      background: #0d2250;
+      transform: none;
+      box-shadow: none;
     }
 
     /* Hero metric cards with lift & outline transitions */
@@ -824,17 +822,16 @@
       align-items: center;
       gap: 0.35rem;
       padding: 0.5rem 1rem;
-      border-radius: 9999px;
+      border-radius: 6px;
       font-size: 0.875rem;
       font-weight: 600;
-      transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s cubic-bezier(0.16, 1, 0.3, 1), filter 0.2s ease;
+      transition: background-color 0.2s ease;
       cursor: pointer;
     }
     .activity-badge:hover {
-      transform: translateY(-2px) scale(1.05);
-      cursor: pointer;
-      box-shadow: 0 6px 14px rgba(0,0,0,0.08);
-      filter: brightness(1.03);
+      transform: none;
+      box-shadow: none;
+      filter: none;
     }
 
     /* ==========================================================================
@@ -924,39 +921,42 @@
     }
     .btn-submit-form {
       width: 100%;
-      padding: 1rem;
-      border-radius: 0.75rem;
-      background: #F7B500;
-      border: none;
-      color: #001b4b;
+      padding: 0.85rem 1.25rem;
+      border-radius: 6px;
+      background: #12306b;
+      border: 1px solid #0d2250;
+      color: #ffffff;
       font-family: inherit;
-      font-size: 1rem;
+      font-size: 0.95rem;
       font-weight: 700;
       text-transform: uppercase;
-      letter-spacing: 0.05em;
+      letter-spacing: 0.04em;
       cursor: pointer;
       display: flex;
       align-items: center;
       justify-content: center;
       gap: 0.5rem;
-      box-shadow: 0 4px 12px rgba(247, 181, 0, 0.35);
-      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+      box-shadow: none;
+      transition: background-color 0.2s ease, border-color 0.2s ease;
     }
     .btn-submit-form:hover {
-      background: #feb62f;
-      transform: translateY(-3px);
-      box-shadow: 0 10px 20px -5px rgba(232, 163, 23, 0.45);
-      filter: brightness(1.03);
+      background: #0d2250;
+      border-color: #081736;
+      color: #ffffff;
+      transform: none;
+      box-shadow: none;
+      filter: none;
     }
     .btn-submit-form:active {
-      transform: translateY(0);
-      box-shadow: 0 3px 8px rgba(247, 181, 0, 0.3);
+      background: #081736;
+      transform: none;
+      box-shadow: none;
     }
     .btn-submit-form .material-symbols-outlined {
-      transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+      transition: none;
     }
     .btn-submit-form:hover .material-symbols-outlined {
-      transform: translateX(4px);
+      transform: none;
     }
 
     /* ==========================================================================
@@ -1067,35 +1067,35 @@
     .social-icon-btn:hover {
       background: #feb62f !important;
       color: #001b4b !important;
-      transform: translateY(-3px) scale(1.08) !important;
-      box-shadow: 0 6px 14px rgba(254, 182, 47, 0.35) !important;
+      transform: none !important;
+      box-shadow: none !important;
     }
     .social-icon-btn.social-wa:hover {
       background: #25D366 !important;
       color: #06341d !important;
-      transform: translateY(-3px) scale(1.08) !important;
-      box-shadow: 0 6px 16px rgba(37, 211, 102, 0.45) !important;
+      transform: none !important;
+      box-shadow: none !important;
     }
     .social-icon-btn.social-fb:hover {
       background: #1877F2 !important;
       color: #ffffff !important;
-      transform: translateY(-3px) scale(1.08) !important;
-      box-shadow: 0 6px 16px rgba(24, 119, 242, 0.45) !important;
+      transform: none !important;
+      box-shadow: none !important;
     }
     .social-icon-btn.social-ig:hover {
       background: #E4405F !important;
       color: #ffffff !important;
-      transform: translateY(-3px) scale(1.08) !important;
-      box-shadow: 0 6px 16px rgba(228, 64, 95, 0.45) !important;
+      transform: none !important;
+      box-shadow: none !important;
     }
     .social-icon-btn.social-yt:hover {
       background: #FF0000 !important;
       color: #ffffff !important;
-      transform: translateY(-3px) scale(1.08) !important;
-      box-shadow: 0 6px 16px rgba(255, 0, 0, 0.45) !important;
+      transform: none !important;
+      box-shadow: none !important;
     }
 
-    /* WhatsApp Action Buttons */
+    /* WhatsApp Action Buttons (Flat, Non-Shiny) */
     .btn-whatsapp-block {
       display: inline-flex;
       align-items: center;
@@ -1104,59 +1104,51 @@
       width: 100%;
       margin-top: 0.5rem;
       padding: 0.75rem 1rem;
-      border-radius: 0.75rem;
+      border-radius: 6px;
       background: #25D366;
       color: #06341d !important;
       font-weight: 700;
       font-size: 0.9rem;
       text-decoration: none;
-      box-shadow: 0 3px 12px rgba(37, 211, 102, 0.28);
-      transition: all 0.25s ease;
-      border: 1px solid rgba(6, 52, 29, 0.15);
+      box-shadow: none;
+      transition: background-color 0.2s ease;
+      border: 1px solid #1eb956;
     }
     .btn-whatsapp-block svg {
       flex-shrink: 0;
       fill: #06341d;
-      transition: transform 0.2s ease;
     }
     .btn-whatsapp-block:hover {
       background: #1eb956;
       color: #032112 !important;
-      transform: translateY(-2px);
-      box-shadow: 0 6px 18px rgba(37, 211, 102, 0.45);
-    }
-    .btn-whatsapp-block:hover svg {
-      transform: scale(1.1);
+      transform: none;
+      box-shadow: none;
     }
 
     .btn-whatsapp-pill {
       display: inline-flex;
       align-items: center;
       gap: 0.5rem;
-      padding: 0.75rem 1.35rem;
-      border-radius: 9999px;
+      padding: 0.75rem 1.25rem;
+      border-radius: 6px;
       background: #25D366;
       color: #06341d !important;
       font-weight: 700;
       font-size: 0.9rem;
       text-decoration: none;
-      box-shadow: 0 3px 12px rgba(37, 211, 102, 0.28);
-      transition: all 0.25s ease;
-      border: 1px solid rgba(6, 52, 29, 0.15);
+      box-shadow: none;
+      transition: background-color 0.2s ease;
+      border: 1px solid #1eb956;
     }
     .btn-whatsapp-pill svg {
       flex-shrink: 0;
       fill: #06341d;
-      transition: transform 0.2s ease;
     }
     .btn-whatsapp-pill:hover {
       background: #1eb956;
       color: #032112 !important;
-      transform: translateY(-2px);
-      box-shadow: 0 6px 18px rgba(37, 211, 102, 0.45);
-    }
-    .btn-whatsapp-pill:hover svg {
-      transform: scale(1.1);
+      transform: none;
+      box-shadow: none;
     }
 
     .map-btn-group {
@@ -1166,17 +1158,19 @@
       align-items: center;
     }
     .map-btn-group a {
-      height: 44px !important;
+      height: 42px !important;
       display: inline-flex !important;
       align-items: center !important;
       justify-content: center !important;
       gap: 0.45rem !important;
-      padding: 0 1.35rem !important;
+      padding: 0 1.25rem !important;
       font-size: 0.875rem !important;
       font-weight: 700 !important;
-      border-radius: 9999px !important;
+      border-radius: 6px !important;
       text-decoration: none !important;
       box-sizing: border-box !important;
+      box-shadow: none !important;
+      transform: none !important;
     }
 
     /* ==========================================================================
@@ -1255,35 +1249,35 @@
     }
 
     /* ==========================================================================
-       11. FLOATING BACK-TO-TOP BUTTON (SMOOTH HOVER & BOUNCE)
+       11. FLOATING BACK-TO-TOP BUTTON (Flat, Non-Shiny)
        ========================================================================== */
     .back-to-top-fab {
       position: fixed;
       bottom: 1.5rem;
       right: 1.5rem;
-      width: 48px;
-      height: 48px;
-      border-radius: 9999px;
+      width: 44px;
+      height: 44px;
+      border-radius: 6px;
       background: #12306b;
       color: #ffffff;
       display: flex;
       align-items: center;
       justify-content: center;
       z-index: 999;
-      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
-      border: 2px solid rgba(255, 255, 255, 0.2);
-      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+      border: 1px solid #0d2250;
+      transition: background-color 0.2s ease;
     }
     .back-to-top-fab:hover {
-      background: #001b4b;
-      transform: translateY(-3px) scale(1.08);
-      box-shadow: 0 10px 20px -5px rgba(0, 27, 75, 0.45);
-      border-color: #feb62f;
-      color: #feb62f;
+      background: #0d2250;
+      transform: none;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+      border-color: #0d2250;
+      color: #ffffff;
     }
     .back-to-top-fab:active {
-      transform: translateY(0) scale(1);
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      background: #061536;
+      transform: none;
     }
 
     /* ==========================================================================
@@ -1653,15 +1647,6 @@
   }
 }
 
-@keyframes pulseGlow {
-  0%, 100% {
-    box-shadow: 0 4px 14px rgba(247, 181, 0, 0.35);
-  }
-  50% {
-    box-shadow: 0 6px 24px rgba(247, 181, 0, 0.65);
-  }
-}
-
 @keyframes heroBgAura {
   0%, 100% { transform: scale(1) translate(0, 0); }
   50% { transform: scale(1.08) translate(-12px, 8px); }
@@ -1678,10 +1663,6 @@
 
 .badge-hero {
   animation: badgeFloat 4s infinite ease-in-out;
-}
-
-.btn-apply-header {
-  animation: pulseGlow 3.5s infinite ease-in-out;
 }
 
 /* Scroll Reveal States */
