@@ -361,7 +361,7 @@ if (location.protocol === 'http:' && location.hostname !== 'localhost' && locati
     function sync() {
       var sName = (document.getElementById('student_name') || {}).value || '';
       var grade = (document.getElementById('grade') || {}).value || '';
-      var text = 'Hello KCB Gurukulam, I would like to enquire about Admissions 2026-27.';
+      var text = 'Hello KCB Gurukulam, I would like to enquire about Admissions 2027-28.';
       if (sName) text += ' Student: ' + sName.trim() + '.';
       if (grade) text += ' Grade: ' + grade + '.';
       waBtn.href = 'https://wa.me/918332949000?text=' + encodeURIComponent(text);
