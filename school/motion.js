@@ -381,13 +381,13 @@ if (location.protocol === 'http:' && location.hostname !== 'localhost' && locati
     if (provider === 'osm') {
       gmap.style.display = 'none';
       osm.style.display = 'block';
-      if (btnOsm) { btnOsm.style.background = '#BAE6FD'; btnOsm.style.color = '#0369A1'; }
-      if (btnGmap) { btnGmap.style.background = 'transparent'; btnGmap.style.color = '#0369A1'; }
+      if (btnOsm) { btnOsm.style.background = '#12306b'; btnOsm.style.color = '#ffffff'; }
+      if (btnGmap) { btnGmap.style.background = 'transparent'; btnGmap.style.color = '#12306b'; }
     } else {
       osm.style.display = 'none';
       gmap.style.display = 'block';
-      if (btnGmap) { btnGmap.style.background = '#BAE6FD'; btnGmap.style.color = '#0369A1'; }
-      if (btnOsm) { btnOsm.style.background = 'transparent'; btnOsm.style.color = '#0369A1'; }
+      if (btnGmap) { btnGmap.style.background = '#12306b'; btnGmap.style.color = '#ffffff'; }
+      if (btnOsm) { btnOsm.style.background = 'transparent'; btnOsm.style.color = '#12306b'; }
     }
   };
 
