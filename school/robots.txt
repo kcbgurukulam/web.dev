@@ -37,4 +37,7 @@ Allow: /
 User-agent: CCBot
 Allow: /
 
+User-agent: Bravebot
+Allow: /
+
 Sitemap: https://kcbgurukulam.in/sitemap.xml
